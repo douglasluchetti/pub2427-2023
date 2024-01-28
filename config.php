@@ -5,3 +5,5 @@ $db_pass = "l2yt1z9ari3b7ivr";
 $db_name = "e9hxtfiwq6fz1for";
 
 $connect = msqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database connection error");
+
+?>

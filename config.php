@@ -1,9 +1,13 @@
 <?php
-$db_host = "tvcpw8tpu4jvgnnq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-$db_user = "g3iwo7l2nhxhu3jj";
-$db_pass = "l2yt1z9ari3b7ivr";
-$db_name = "e9hxtfiwq6fz1for";
+$host = "tvcpw8tpu4jvgnnq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$dbusername = "g3iwo7l2nhxhu3jj";
+$dbpassword = "l2yt1z9ari3b7ivr";
+$dbname = "e9hxtfiwq6fz1for";
 
-$connect = msqli_connect($db_host, $db_user, $db_pass, $db_name) or die("database connection error");
+$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 ?>

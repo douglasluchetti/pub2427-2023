@@ -17,7 +17,7 @@
         </div>
         <div class="content">
             <div class="block" id="login">
-                <form action="login.php" method="POST" class="login">
+                <form action="login/login.php" method="POST" class="login">
                     <input class="login" type="text" name="username" placeholder="Número de matrícula ou e-mail" required>
                     <input class="login" type="password" name="password" placeholder="Senha" required>
                     <button type="submit">ENTRAR</button>

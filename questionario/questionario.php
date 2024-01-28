@@ -78,7 +78,7 @@ $num_questions = 1;
                     <h3><?php echo $welcome_message; ?></h3>
                     <h4><?php echo $course_info; ?></h4>
                 </div>
-                <a class="logout" href="..\login\log    out.php">
+                <a class="logout" href="..\login\logout.php">
                     <img src="..\images\logout.svg" alt="Logout" class="logout">
                 </a>
             </div>

@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    include("../config.php")
+    include("config.php")
 
     $query = "SELECT * FROM user WHERE (user_id=? OR email=?) AND password=?";
     $stmt = $conn->prepare($query);
@@ -19,14 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $username;
 
         if ($user_data['user_type'] == 0) {
-            header("Location: ..\index\index_aluno.php");
+            header("Location: index_aluno.php");
             exit();
         } elseif ($user_data['user_type'] == 1) {
-            header("Location: ..\index\index_master.php");
+            header("Location: index_master.php");
             exit();
         }
     } else {
-        header("Location: login_error.html");
+        header("Location: login_error.php");
         exit();
     }
 

@@ -16,7 +16,7 @@
             <div class="line" id="darker"></div>
         </div>
         <a class="error" id="error_password" onclick="fecharerror_password()">
-            <span>Usuário ou senha inválidos.</span>
+            <span class="error_text">Uma nova senha foi enviada para o endereço de e-mail cadastrado.</span>
             <img src="..\images\close.svg" alt="close" class="close">
         </a>
         <script>

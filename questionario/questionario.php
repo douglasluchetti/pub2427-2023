@@ -193,6 +193,14 @@ $num_questions = 1;
                 <a href="https://teste.123" class="footer">Termos de Uso</a>
             </div>
         </div>
+        <script>
+            document.getElementById('survey').addEventListener('submit', function(event) {
+                var confirmation = confirm('Tem certeza de que deseja enviar o formulário?');
+                if (!confirmation) {
+                    event.preventDefault();
+                }
+            });
+        </script>
     </body>
 </html>
 

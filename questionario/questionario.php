@@ -194,11 +194,13 @@ $num_questions = 1;
             </div>
         </div>
         <script>
-            document.getElementById('survey').addEventListener('submit', function(event) {
-                var confirmation = confirm('Tem certeza de que deseja enviar o formulário?');
-                if (!confirmation) {
-                    event.preventDefault();
-                }
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('survey').addEventListener('submit', function(event) {
+                    var confirmation = confirm('Tem certeza de que deseja enviar o formulário?');
+                    if (!confirmation) {
+                        event.preventDefault();
+                    }
+                });
             });
         </script>
     </body>

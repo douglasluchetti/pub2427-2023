@@ -138,7 +138,7 @@ $instance_off = FALSE;
     </div>
     <div class="footer">
         <div class="footer_content">
-            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer">Desenvolvedores</a>]
+            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer">Desenvolvedores</a>
             <a href="https://teste.123" class="footer">Termos de Uso</a>
         </div>
     </div>

@@ -72,19 +72,43 @@ $instance_off = FALSE;
                 <h2>Aplicação de Questionário</h2>
                 <a class="button_negative" href="https://teste.123">NOVA INSTÂNCIA DE AVALIAÇÃO</a>
             </div>
-            <form>
+            <div class="master">
                 <h3>Ações sobre os questionários da instância selecionada:</h3>
-                <select class="select_instance" name="instance" id="instance">
-                    <option value="2023 - Segundo Semestre">2023 - Segundo Semestre</option>
-                    <option value="2023 - Segundo Semestre">2023 - Segundo Semestre</option>
-                    <option value="2023 - Segundo Semestre">2023 - Segundo Semestre</option>
-                </select>
-            </form>
+                <div class="center">
+                    <form class="select" id="select_instance">
+                        <select class="select_instance" name="instance" id="instance">
+                            <option value="2023 - Segundo Semestre">2023 - Segundo Semestre</option>
+                            <option value="2023 - Segundo Semestre">2023 - Segundo Semestre</option>
+                            <option value="2023 - Segundo Semestre">2023 - Segundo Semestre</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="inline_content">
+                    <h3>Status da instância:</h3>
+                    <h3 class="instance_status" id="waiting">Aguardando abertura. Questionários fechados</h3>
+                </div>
+                <div class="inline_content">
+                    <li>Configurar questionários, disciplinas e alunos da instância</li>
+                    <a class="logout" href="">
+                        <img src="..\images\config.svg" alt="Config" class="close">
+                    </a>
+                </div>   
+                <h3>Atulização de bases:</h3>
+                <div class="inline_content">
+                    <li>Emails_docentes.xlsx</li>
+                    <a class="logout" href="">
+                        <img src="..\images\upload.svg" alt="Upload" class="close">
+                    </a>
+                </div>
+                <div class="center">
+                    <button type="submit">INICIAR INSTÂNCIA DE AVALIAÇÃO</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">
         <div class="footer_content">
-            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer">Desenvolvedores</a>
+            <a href="https://teste.123" class="footer">Desenvolvedores</a>
             <a href="https://teste.123" class="footer">Termos de Uso</a>
         </div>
     </div>

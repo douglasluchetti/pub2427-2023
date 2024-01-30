@@ -77,6 +77,15 @@ div.content {
     flex-direction: column;
   }
 
+.title_reset-password{
+    align-self: auto;
+    margin-bottom: 24px;
+}
+
+.text_reset-password{
+    text-align: start;
+}
+
 div.footer{
     display: flex;
     background: var(--Divider);  
@@ -184,7 +193,7 @@ a.button_negative{
     text-decoration: none;
 }
 
-h3{
+h3,li{
     color: var(--On-Surface-High-Emphasis);
     font-family: Archivo;
     font-size: 20px;
@@ -233,7 +242,7 @@ h4{
     display: flex;
     top: 110px; 
     right: 28px;
-    width: 360px;
+    width: 390px;
     height: 60px;
     flex-shrink: 0;
     border-radius: 12px;
@@ -242,9 +251,13 @@ h4{
     color: var(--Surface, #FFF);
     font-family: Archivo;
     align-items: center;
-    justify-content: space-around;
     cursor: pointer;
+    padding-left: 18px;
     
+}
+
+.error_text{
+    width: 340px;
 }
 
 .close{
@@ -377,7 +390,7 @@ h4.alternative{
 .survey_buttons{
     display: flex;
     align-self: stretch;
-    padding: 26px 34px;
+    margin: 0px 40px 0px 40px;
     justify-content: space-between;
 }
 
@@ -386,4 +399,82 @@ h4.alternative{
 }
 #survey_positive{
     width: 254.6px;
+}
+
+.inline_content{
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.master{
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.instance_status{
+    align-self: stretch;
+    flex-grow: 1;
+    text-align: center;
+}
+
+#waiting{
+    color: grey
+}
+
+.master > * {
+    margin: 0px 80px 40px 80px;
+}
+
+.center{
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+select {
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: var(--On-Surface-High-Emphasis);
+    background-color: var(--On-Surface-Low-Emphasis);
+    background-image: none;
+    cursor: pointer;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
+}
+/* Custom Select wrapper */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+}
+/* Arrow */
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: var;
+    transition: .25s all ease;
+    pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+    color: var(--Divider);
 }

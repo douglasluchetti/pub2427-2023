@@ -9,7 +9,7 @@
         <div class="header">
             <div class="logo_name">
                 <img src="..\images\logo.svg" alt="Logo" class="logo">
-                <h1>Teste</h1>
+                <h1>Avaliação de Disciplinas</h1>
             </div>
             <div class="line"></div>
             <div class="line" id="standart"></div>

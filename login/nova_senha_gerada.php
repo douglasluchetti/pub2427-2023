@@ -31,7 +31,7 @@
                     <input class="login" type="text" name="username" placeholder="Número de matrícula ou e-mail" required>
                     <input class="login" type="password" name="password" placeholder="Senha" required>
                     <button type="submit">ENTRAR</button>
-                    <a class="button_negative" href="https://teste.123">ESQUECI A SENHA / PRIMEIRO ACESSO</a>
+                    <a class="button_negative" href="nova_senha.php">ESQUECI A SENHA / PRIMEIRO ACESSO</a>
                 </form>
             </div>
         </div>

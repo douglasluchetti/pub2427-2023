@@ -11,6 +11,7 @@
     --On-Surface-Low-Emphasis: #C7C7C7;
     --On-Surface-High-Emphasis: #1E2732;
     --Primary-Default: #FCB421;
+    --Secondary-Lighter: #30E395;
   }
 
 body{
@@ -477,4 +478,12 @@ select::-ms-expand {
 /* Transition */
 .select:hover::after {
     color: var(--Divider);
+}
+
+#open{
+    color: var(--Secondary-Lighter);
+}
+
+#closed{
+    color: var(--Red, #FF3134);
 }

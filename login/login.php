@@ -32,6 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../index/index_aluno.php");
             exit();
         } elseif ($user_data['user_type'] == 1) {
+            $query_instance = "SELECT MAX(instance_id) AS max_instance_id FROM instance";
+            $stmt_instance = $conn->prepare($query_instance);
+            $stmt_instance->execute();
+            $result_instance = $stmt_instance->get_result();
+            $max_instance_id = $result_instance->fetch_assoc()['max_instance_id'];
+            $_SESSION['instance_id'] = $max_instance_id;
             header("Location: ../index/index_master.php");
             exit();
         }

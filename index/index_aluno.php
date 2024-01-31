@@ -2,14 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ..\index.php"");
+    header("Location: ..\index.php");
     exit();
 }
 
-$host = "tvcpw8tpu4jvgnnq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-$dbusername = "g3iwo7l2nhxhu3jj";
-$dbpassword = "l2yt1z9ari3b7ivr";
-$dbname = "e9hxtfiwq6fz1for";
+include('config.php');
 
 $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 

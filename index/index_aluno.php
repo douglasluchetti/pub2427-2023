@@ -10,11 +10,15 @@ include('../config.php');
 
 $username = $_SESSION['username'];
 
+function executeQuery($conn, $query, $param) {
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $param);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
 $query_user_info = "SELECT * FROM user WHERE user_id = ?";
-$stmt_user_info = $conn->prepare($query_user_info);
-$stmt_user_info->bind_param("s", $username);
-$stmt_user_info->execute();
-$result_user_info = $stmt_user_info->get_result();
+$result_user_info = executeQuery($conn, $query_user_info, $username);
 $row = $result_user_info->fetch_assoc();
 $name = $row['name'];
 $course = $row['course'];
@@ -22,10 +26,7 @@ $welcome_message = "Olá, $name";
 $course_info = "$course - $username";
 
 $query_user_class = "SELECT * FROM user_class_relation WHERE user_id = ?";
-$stmt_user_rows = $conn->prepare($query_user_class);
-$stmt_user_rows->bind_param("s", $username);
-$stmt_user_rows->execute();
-$result_user_rows = $stmt_user_rows->get_result();
+$result_user_rows = executeQuery($conn, $query_user_class, $username);
 
 
 $instance_off = FALSE;

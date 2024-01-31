@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-include('config.php');
+include('../config.php');
 
 $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 

@@ -8,12 +8,6 @@ if (!isset($_SESSION['username'])) {
 
 include('../config.php');
 
-$conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 $username = $_SESSION['username'];
 
 $query_user_info = "SELECT * FROM user WHERE user_id = ?";

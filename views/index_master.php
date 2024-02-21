@@ -67,15 +67,14 @@ $instance_off = FALSE;
                 <div class="center">
                     <form class="select" id="select_instance" action="../controllers/mudar_instancia.php" method="POST">
                         <select class="select_instance" name="instance_id" id="instance" onchange="this.form.submit()">
-
                         <?php
-                            while ($row = $result_instance->fetch_assoc()) {
-                                if (!empty($_SESSION['instance_id'])) {
+                            if (!empty($_SESSION['instance_id'])) {
                                     ?>
                                        <option value=<?php echo $_SESSION['instance_id']; ?>><?php echo $_SESSION['instance_id']; ?></option>   
                                     <?php
                                 }
-                                elseif ($instance_id != $row['instance_id']) {
+                            while ($row = $result_instance->fetch_assoc()) {
+                                if ($instance_id != $row['instance_id']) {
                                     ?>
                                     <option value=<?php echo $row['instance_id']; ?>><?php echo $row['instance_id']; ?></option>
                                     <?php

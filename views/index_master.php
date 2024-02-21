@@ -70,9 +70,9 @@ $instance_off = FALSE;
 
                         <?php
                             while ($row = $result_instance->fetch_assoc()) {
-                                if (!empty($instance_id)) {
+                                if (!empty($_SESSION['instance_id'])) {
                                     ?>
-                                       <option value=<?php echo $instance_id; ?>><?php echo $instance_id; ?></option>   
+                                       <option value=<?php echo $_SESSION['instance_id']; ?>><?php echo $_SESSION['instance_id']; ?></option>   
                                     <?php
                                 }
                                 elseif ($instance_id != $row['instance_id']) {

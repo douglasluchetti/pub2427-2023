@@ -67,12 +67,14 @@ $instance_off = FALSE;
                 <div class="center">
                     <form class="select" id="select_instance" action="../controllers/mudar_instancia.php" method="POST">
                         <select class="select_instance" name="instance_id" id="instance" onchange="this.form.submit()">
+                        <option value=<?php echo $instance_id; ?>><?php echo $instance_id; ?></option>
                         <?php
                             while ($row = $result_instance->fetch_assoc()) {
-                                $instance_id = $row['instance_id'];
-                                ?>
-                            <option value=<?php echo $instance_id; ?>><?php echo $instance_id; ?></option>
-                            <?php
+                                if ($instance_id != $row['instance_id']) {
+                                    ?>
+                                    <option value=<?php echo $row['instance_id']; ?>><?php echo $row['instance_id']; ?></option>
+                                    <?php
+                                };
                             }
                             ?>
                         </select>

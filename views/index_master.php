@@ -65,7 +65,7 @@ $instance_off = FALSE;
             <div class="master">
                 <h3>Ações sobre os questionários da instância selecionada:</h3>
                 <div class="center">
-                    <form class="select" id="select_instance" action="../s/mudar_instancia.php" method="POST">
+                    <form class="select" id="select_instance" action="../controllers/mudar_instancia.php" method="POST">
                         <select class="select_instance" name="instance_id" id="instance" onchange="this.form.submit()">
                         <?php
                             while ($row = $result_instance->fetch_assoc()) {

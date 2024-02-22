@@ -478,33 +478,33 @@ select::-ms-expand {
 /* Transition */
 .select:hover::after {
     color: var(--Divider);
-}
+};
 
 #open{
     color: var(--Secondary-Lighter);
-}
+};
 
 #closed{
     color: var(--Red, #FF3134);
-}
+};
 
 .button_image{
     width: 24px;
     height: 24px;
     margin-left: 12px;
-}
+};
 
 #instance_name{
     width: 400px;
-}
+};
 
 #code{
     width: 64px;
-}
+};
 
 #suject_name{
     width: 500px;
-}
+};
 
 textarea{
     display: flex;
@@ -525,11 +525,11 @@ textarea{
     line-height: 24px; /* 120% */
     letter-spacing: 0.15px;
     resize: none;
-}
+};
 
 .textarea-container {
     border: 1px solid var(--On-Surface-Medium-Emphasis, #4B4B4B);
     width: fit-content;
     border-radius: 32px;
     padding: 10px 14px;
-}
+};

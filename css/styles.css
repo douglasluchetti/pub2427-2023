@@ -478,7 +478,7 @@ select::-ms-expand {
 /* Transition */
 .select:hover::after {
     color: var(--Divider);
-};
+}
 
 #open{
     color: var(--Secondary-Lighter);

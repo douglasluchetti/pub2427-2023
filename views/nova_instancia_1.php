@@ -78,8 +78,8 @@ $course_info = "Administrador do Sistema - $username";
                     </a>
                 </div>  
                 <div class="survey_buttons">
-                    <a class="button_negative" href='views\nova_instancia_1.php' id="survey_negative">VOLTAR</a>
-                    <button type="submit" id="survey_positive" action="views\nova_instancia_2.php">PROSSEGUIR</button>
+                    <a class="button_negative" href='nova_instancia_1.php' id="survey_negative">VOLTAR</a>
+                    <button type="submit" id="survey_positive" action="nova_instancia_2.php">PROSSEGUIR</button>
                 </div>
             </div>
         </div>

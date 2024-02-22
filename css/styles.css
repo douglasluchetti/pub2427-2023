@@ -498,11 +498,11 @@ select::-ms-expand {
     width: 400px;
 };
 
-#code{
+input#code{
     width: 64px;
 };
 
-#suject_name{
+input#suject_name{
     width: 500px;
 };
 
@@ -527,7 +527,7 @@ textarea{
     resize: none;
 };
 
-.textarea-container {
+div.textarea-container {
     border: 1px solid var(--On-Surface-Medium-Emphasis, #4B4B4B);
     width: fit-content;
     border-radius: 32px;

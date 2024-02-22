@@ -496,10 +496,12 @@ select::-ms-expand {
 
 #instance_name{
     width: 400px;
+    height: 38px;
 }
 
 input#code{
-    width: 64px;
+    width: 128px;
+    height: 38px;
 }
 
 input#suject_name{

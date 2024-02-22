@@ -506,6 +506,7 @@ input#code{
 
 input#suject_name{
     width: 500px;
+    height: 38px;
 }
 
 textarea{

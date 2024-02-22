@@ -11,6 +11,6 @@ else{
     $_SESSION['subject_id'] = $_POST['subject_id'];
     $_SESSION['questionnaire_id'] = $_POST['questionnaire_id'];
     $_SESSION['instance_id'] = $_POST['instance_id'];
-    header("Location: ..\views\questionario.php");
+    header("Location: ../views/questionario.php");
 }
 ?>

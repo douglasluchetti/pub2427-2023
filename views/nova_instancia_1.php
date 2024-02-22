@@ -55,7 +55,7 @@ $course_info = "Administrador do Sistema - $username";
                 <h3 class="survey">Importe uma ou mais listas de alunos na formatação adequada</h3>
             </div>
             <div class="center">
-                <a class="button_negative" href="https://teste.123">UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image"> </a>
+                <a class="button_negative" href="https://teste.123">UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image"></a>
             </div>
             <div class="master">
                 <h3>Arquivos selecionados:</h3>

@@ -54,10 +54,9 @@ $course_info = "Administrador do Sistema - $username";
                 <h2>Configurar instância de avaliação</h2>
                 <h3 class="survey">Verifique as informações encontradas para cada disciplina</h3>
             </div>
-            <div class="center">
-                <input class="login" type="text" id="suject_name" placeholder="Código da Disciplina" value="ABC1111" required>
-            </div>
             <div class="master">
+                <h3>Insira um nome para a nova instância de avaliação (exemplo: 20241):</h3>
+                <input class="login" type="text" id="suject_name" placeholder="Nome da Instância" required>
                 <h3>Questionário padrão:</h3>
                 <div class="inline_content">
                     <li>Questionário_padrão.xlsx</li>
@@ -68,19 +67,19 @@ $course_info = "Administrador do Sistema - $username";
                 <h3>Turmas identificadas:</h3>
                 <div class="inline_content">
                     <li>20241 - ABC1111 - Disciplina Exemplo 1</li>
-                    <a class="logout" href="">
+                    <a class="logout" href="nova_instancia_3.php">
                         <img src="..\images\config.svg" alt="Config" class="close">
                     </a>
                 </div>
                 <div class="inline_content">
                     <li>20241 - ABC2222 - Disciplina Exemplo 2</li>
-                    <a class="logout" href="">
+                    <a class="logout" href="nova_instancia_3.php">
                         <img src="..\images\config.svg" alt="Config" class="close">
                     </a>
                 </div>
                 <div class="inline_content">
                     <li>20242 - ABC2222 - Disciplina Exemplo 2</li>
-                    <a class="logout" href="">
+                    <a class="logout" href="nova_instancia_3.php">
                         <img src="..\images\config.svg" alt="Config" class="close">
                     </a>
                 </div>

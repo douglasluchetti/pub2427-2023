@@ -60,7 +60,7 @@ $instance_off = FALSE;
         <div class="block" id="index">
              <div class="survey_buttons">  
                 <h2>Aplicação de Questionário</h2>
-                <a class="button_negative" href="views\nova_instancia_1.php">NOVA INSTÂNCIA DE AVALIAÇÃO</a>
+                <a class="button_negative" href="nova_instancia_1.php">NOVA INSTÂNCIA DE AVALIAÇÃO</a>
             </div>
             <div class="master">
                 <h3>Ações sobre os questionários da instância selecionada:</h3>

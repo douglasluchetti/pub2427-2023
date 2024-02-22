@@ -114,7 +114,7 @@ $instance_off = FALSE;
                                 </div>
                                 <div class="center">
                                     <button type="submit">INICIAR INSTÂNCIA DE AVALIAÇÃO</button>
-                                </div>;
+                                </div>
                             <?php
                         } elseif ($instance_status == 1) {
                             ?>

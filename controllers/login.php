@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } else {
-        header("Location: views/senha_incorreta.php");
+        header("Location: ../views/senha_incorreta.php");
         exit();
     }
 

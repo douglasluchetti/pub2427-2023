@@ -501,7 +501,7 @@ select::-ms-expand {
 
 input#code{
     width: 128px;
-    height: 38px;
+    height: 48px;
 }
 
 input#suject_name{

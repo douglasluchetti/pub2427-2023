@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    $username = $row['username'];
+    $username = $row['user_id'];
 
     if ($result->num_rows == 1) {
         session_start(); // Inicia a sessão após a autenticação bem-sucedida

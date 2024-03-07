@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $username, $username, $password);
     $stmt->execute();
     $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $username = $row['user_id'];
+    // $row = $result->fetch_assoc();
+    // $username = $row['user_id'];
 
     if ($result->num_rows == 1) {
         session_start(); // Inicia a sessão após a autenticação bem-sucedida

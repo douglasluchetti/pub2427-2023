@@ -1,8 +1,8 @@
 <?php
-$host = "tvcpw8tpu4jvgnnq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-$dbusername = "g3iwo7l2nhxhu3jj";
-$dbpassword = "l2yt1z9ari3b7ivr";
-$dbname = "e9hxtfiwq6fz1for";
+$host = "vhw3t8e71xdz9k14.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$dbusername = "eoiojon5sw94hlyz";
+$dbpassword = "v3ed9noaeshmczlr";
+$dbname = "u9mjwm4wg66017rf";
 
 $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 

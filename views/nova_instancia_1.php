@@ -52,13 +52,13 @@ $course_info = "Administrador do Sistema - $username";
         <div class="block" id="index">
             <div class="survey_title">  
                 <h2>Configurar instância de avaliação</h2>
-                <h3 class="survey">Importe uma ou mais listas de alunos na formatação adequada</h3>
+                <h3 class="survey">Importe uma ou mais listas de alunos e questionários na formatação adequada</h3>
             </div>
             <div class="center">
                 <a class="button_negative" href="https://teste.123">UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image"></a>
             </div>
             <div class="master">
-                <h3>Arquivos selecionados:</h3>
+                <h3>Listas de Alunos:</h3>
                 <div class="inline_content">
                     <li>Lista_de_alunos_formatada_1.xlsx</li>
                     <a class="logout" href="">
@@ -83,6 +83,19 @@ $course_info = "Administrador do Sistema - $username";
                         <button type="submit" id="survey_positive">PROSSEGUIR</button>
                     <form>
                 </div>
+                <h3>Questionários:</h3>
+                <div class="inline_content">
+                    <li>Questionário_padrão.xlsx</li>
+                    <a class="logout" href="">
+                        <img src="..\images\delete.svg" alt="Delete" class="close">
+                    </a>
+                </div>   
+                <div class="inline_content">
+                    <li>Questionário_laboratório.xlsx</li>
+                    <a class="logout" href="">
+                        <img src="..\images\delete.svg" alt="Delete" class="close">
+                    </a>
+                </div>  
             </div>
         </div>
     </div>

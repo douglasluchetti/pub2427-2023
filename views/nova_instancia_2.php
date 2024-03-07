@@ -58,11 +58,13 @@ $course_info = "Administrador do Sistema - $username";
                 <h3>Insira um nome para a nova instância de avaliação (exemplo: 20241):</h3>
                 <input class="login" type="text" id="suject_name" placeholder="Nome da Instância" required>
                 <h3>Questionário padrão:</h3>
-                <div class="inline_content">
-                    <li>Questionário_padrão.xlsx</li>
-                    <a class="logout" href="">
-                        <img src="..\images\edit.svg" alt="edit" class="close">
-                    </a>
+                <div class="center">
+                    <form class="select" id="select_instance" method="POST">
+                        <select class="select_instance" name="instance_id" id="instance">
+                            <option>Questionário_padrão.xlsx</option>   
+                            <option>Questionário_laboratório.xlsx</option>   
+                        </select>
+                    </form>
                 </div>   
                 <h3>Turmas identificadas:</h3>
                 <div class="inline_content">

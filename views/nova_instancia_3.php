@@ -63,12 +63,14 @@ $course_info = "Administrador do Sistema - $username";
                     <input class="login" type="text" id="suject_name" placeholder="Nome da Disciplina" value="Disciplina Exemplo 1" required>
                 </div>
                 <h3>Questionário aplicado:</h3>
-                <div class="inline_content">
-                    <li>Questionário_padrão.xlsx</li>
-                    <a class="logout" href="">
-                        <img src="..\images\edit.svg" alt="edit" class="close">
-                    </a>
-                </div>   
+                <div class="center">
+                    <form class="select" id="select_instance" method="POST">
+                        <select class="select_instance" name="instance_id" id="instance">
+                            <option>Questionário_padrão.xlsx</option>   
+                            <option>Questionário_laboratório.xlsx</option>   
+                        </select>
+                    </form>
+                </div>    
                 <h3>E-mail dos participantes:</h3>
                 <div class="center">
                     <div class="textarea-container">

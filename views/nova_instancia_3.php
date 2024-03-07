@@ -62,7 +62,7 @@ $course_info = "Administrador do Sistema - $username";
                     <input class="login" type="text" id="code" placeholder="Disciplina" value="ABC1111" required>
                     <input class="login" type="text" id="suject_name" placeholder="Nome da Disciplina" value="Disciplina Exemplo 1" required>
                 </div>
-                <h3>Questionário aplicado:</h3>
+                <h3>Questionário:</h3>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
                         <select class="select_instance" name="instance_id" id="instance">

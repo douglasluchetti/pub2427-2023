@@ -57,7 +57,7 @@ $course_info = "Administrador do Sistema - $username";
             <div class="master">
                 <h3>Insira um nome para a nova instância de avaliação (exemplo: 20241):</h3>
                 <input class="login" type="text" id="suject_name" placeholder="Nome da Instância" required>
-                <h3>Questionário padrão:</h3>
+                <h3>Questionário:</h3>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
                         <select class="select_instance" name="instance_id" id="instance">

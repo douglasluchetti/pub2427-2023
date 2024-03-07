@@ -77,12 +77,6 @@ $course_info = "Administrador do Sistema - $username";
                         <img src="..\images\delete.svg" alt="Delete" class="close">
                     </a>
                 </div>  
-                <div class="survey_buttons">
-                    <a class="button_negative" href='index_master.php' id="survey_negative">VOLTAR</a>
-                    <form action="nova_instancia_2.php">
-                        <button type="submit" id="survey_positive">PROSSEGUIR</button>
-                    <form>
-                </div>
                 <h3>Questionários:</h3>
                 <div class="inline_content">
                     <li>Questionário_padrão.xlsx</li>
@@ -96,6 +90,12 @@ $course_info = "Administrador do Sistema - $username";
                         <img src="..\images\delete.svg" alt="Delete" class="close">
                     </a>
                 </div>  
+                <div class="survey_buttons">
+                    <a class="button_negative" href='index_master.php' id="survey_negative">VOLTAR</a>
+                    <form action="nova_instancia_2.php">
+                        <button type="submit" id="survey_positive">PROSSEGUIR</button>
+                    <form>
+                </div>
             </div>
         </div>
     </div>

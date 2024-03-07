@@ -58,7 +58,7 @@ $course_info = "Administrador do Sistema - $username";
                 <h3>Insira um nome para a nova instância de avaliação (exemplo: 20241):</h3>
                 <input class="login" type="text" id="suject_name" placeholder="Nome da Instância" required>
                 <h3>Questionário:</h3>
-                <h4 id="subtitle_index_admin_2">Selecione o questionário comum que será utilizado nas disciplinas. Para questionários específicos - por exemplo, utilizados em turmas de laboratório ou de trabalho de formatura - altere o questionário diretamente nas configurações da turma abaixo:</h4>
+                <h4 id="subtitle_index_admin_2">Selecione o questionário comum que será utilizado nas disciplinas. Para questionários específicos - por exemplo, utilizados em turmas de laboratório ou de trabalho de formatura - altere o questionário diretamente nas configurações da turma.</h4>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
                         <select class="select_instance" name="instance_id" id="instance">

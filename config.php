@@ -1,8 +1,8 @@
 <?php
-$host = "vhw3t8e71xdz9k14.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-$dbusername = "eoiojon5sw94hlyz";
-$dbpassword = "v3ed9noaeshmczlr";
-$dbname = "u9mjwm4wg66017rf";
+$host = "sql10.freemysqlhosting.net";
+$dbusername = "sql10692813";
+$dbpassword = "njv3pTV5Rc";
+$dbname = "sql10692813";
 
 $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
 

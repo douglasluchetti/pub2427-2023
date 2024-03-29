@@ -172,7 +172,7 @@ button:hover{
     cursor: pointer;
 }
 
-a.button_negative{
+.button_negative{
     display: flex;
     width: 303.6px;
     height: 47.6px;
@@ -192,6 +192,7 @@ a.button_negative{
     background-color: var(--Surface);
     color: var(--Primary-Darker);
     text-decoration: none;
+    cursor: pointer;
 }
 
 h3,li{

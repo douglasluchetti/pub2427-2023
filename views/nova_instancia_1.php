@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: ..\index.php");
-    exit();
-}
+// if (!isset($_SESSION['username'])) {
+//     header("Location: ..\index.php");
+//     exit();
+// }
 
 include('../config.php');
 
@@ -54,42 +54,50 @@ $course_info = "Administrador do Sistema - $username";
                 <h2>Configurar instância de avaliação</h2>
                 <h3 class="survey">Importe uma ou mais listas de alunos e questionários na formatação adequada</h3>
             </div>
-            <div class="center">
-                <a class="button_negative" href="https://teste.123">UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image"></a>
-            </div>
+            <form id="upload-form" class="center" action="../controllers/import.php" method="POST" enctype="multipart/form-data">
+                <label for="file-upload" class="button_negative">
+                    UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image">
+                </label>
+                <input type="hidden" name="import">
+                <input name="file" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()">
+            </form>
+
+        
+
             <div class="master">
                 <h3>Listas de Alunos:</h3>
-                <div class="inline_content">
-                    <li>Lista_de_alunos_formatada_1.xlsx</li>
-                    <a class="logout" href="">
-                        <img src="..\images\delete.svg" alt="Delete" class="close">
-                    </a>
-                </div>   
-                <div class="inline_content">
-                    <li>Lista_de_alunos_formatada_2.xlsx</li>
-                    <a class="logout" href="">
-                        <img src="..\images\delete.svg" alt="Delete" class="close">
-                    </a>
-                </div>  
-                <div class="inline_content">
-                    <li>Lista_de_alunos_formatada_3.xlsx</li>
-                    <a class="logout" href="">
-                        <img src="..\images\delete.svg" alt="Delete" class="close">
-                    </a>
-                </div>  
+                <?php
+                    $query = "SELECT * FROM files WHERE file_type='Lista de Alunos'";
+                    $stmt = $conn->prepare($query);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                        $file = $row['file'];
+                        echo "<div class='inline_content'>";
+                        echo"    <li>$file</li>";
+                        echo"    <a class='logout' href=''>";
+                        echo"        <img src='..\images\delete.svg' alt='Delete' class='close'>";
+                        echo"    </a>";
+                        echo"</div>";
+                    }
+                    
+                ?>
                 <h3>Questionários:</h3>
-                <div class="inline_content">
-                    <li>Questionário_padrão.xlsx</li>
-                    <a class="logout" href="">
-                        <img src="..\images\delete.svg" alt="Delete" class="close">
-                    </a>
-                </div>   
-                <div class="inline_content">
-                    <li>Questionário_laboratório.xlsx</li>
-                    <a class="logout" href="">
-                        <img src="..\images\delete.svg" alt="Delete" class="close">
-                    </a>
-                </div>  
+                <?php
+                    $query = "SELECT * FROM files WHERE file_type='Questionário'";
+                    $stmt = $conn->prepare($query);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                        $file = $row['file'];
+                        echo "<div class='inline_content'>";
+                        echo"    <li>$file</li>";
+                        echo"    <a class='logout' href=''>";
+                        echo"        <img src='..\images\delete.svg' alt='Delete' class='close'>";
+                        echo"    </a>";
+                        echo"</div>";
+                    }
+                ?>
                 <div class="survey_buttons">
                     <a class="button_negative" href='index_master.php' id="survey_negative">VOLTAR</a>
                     <form action="nova_instancia_2.php">

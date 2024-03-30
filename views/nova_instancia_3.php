@@ -21,6 +21,21 @@ $course = $row['course'];
 $welcome_message = "Olá, $name";
 $course_info = "Administrador do Sistema - $username";
 
+$class_id = $_POST['class_id'];
+$subject_id = $_POST['subject_id'];
+
+if (!isset($class_id)){
+    $class_id = $_SESSION['class_id'];
+    $subject_id = $_SESSION['subject_id'];
+}
+
+$query_class_info = "SELECT * FROM `class-temp` WHERE class_id = ? AND subject_id = ?";
+$stmt_class_info = $conn->prepare($query_class_info);
+$stmt_class_info->bind_param("ss", $class_id, $subject_id);
+$stmt_class_info->execute();
+$result_class_info = $stmt_class_info->get_result();
+$class_row = $result_class_info->fetch_assoc();
+$subject_name = $class_row['subject_name'];
 ?>
 
 <html lang="pt-br">
@@ -57,44 +72,91 @@ $course_info = "Administrador do Sistema - $username";
 
             <div class="master">
                 <h3>Insira turma, código da disciplina e nome da disciplina:</h3>
-                <div class="inline_content">
-                    <input class="login" type="text" id="code" placeholder="Turma" value="20241" required>
-                    <input class="login" type="text" id="code" placeholder="Disciplina" value="ABC1111" required>
-                    <input class="login" type="text" id="suject_name" placeholder="Nome da Disciplina" value="Disciplina Exemplo 1" required>
-                </div>
+                <form class="inline_content" id="editar_classe" action="..\controllers\editar_classe.php" method="POST">
+                    <input type="hidden" name="class_id" value="<?php echo $class_id; ?>">
+                    <input type="hidden" name="subject_id" value="<?php echo $subject_id; ?>">
+                    <input class="login" type="text" id="code" placeholder="Turma" name="class_id_new" value="<?php echo $class_id;?>" required>
+                    <input class="login" type="text" id="code" placeholder="Disciplina" name="subject_id_new" value="<?php echo $subject_id;?>" required>
+                    <input class="login" type="text" id="subject_name" placeholder="Nome da Disciplina" name="subject_name" value="<?php echo $subject_name;?>" required>
+                </form>
                 <h3>Questionário:</h3>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
-                        <select class="select_instance" name="instance_id" id="instance">
-                            <option>Questionário_padrão.xlsx</option>   
-                            <option>Questionário_laboratório.xlsx</option>   
+                        <select class="select_instance" name="questionnaire_name" id="instance" required form="editar_classe">
+                        
+                            <?php
+                                $stmt = $conn->prepare("SELECT * FROM `instance_questionnaire_class_relation-temp`
+                                WHERE `class_id` = ? AND `subject_id` = ?");
+                                $stmt->bind_param("ss", $class_id, $subject_id);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                $row = $result->fetch_assoc();
+                                $questionnaire_id = $row['questionnaire_id'];
+                                if(empty($questionnaire_id)){
+                                    echo "<option disabled selected value> -- Selecione um questionário -- </option>";
+                                    $query = "SELECT * FROM `questionnaire-temp`";
+                                    $stmt = $conn->prepare($query);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    while ($row = $result->fetch_assoc()) {
+                                        $row_text = $row['questionnaire_name'];
+                                        echo "<option>$row_text</option>";
+                                    }
+                                }
+                                else{
+                                    $query = "SELECT * FROM `questionnaire-temp` WHERE `questionnaire_id` = ?";
+                                    $stmt = $conn->prepare($query);
+                                    $stmt->bind_param("s", $questionnaire_id);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $row = $result->fetch_assoc();
+                                    $questionnaire_name = $row['questionnaire_name'];
+                                    echo "<option>$questionnaire_name</option>";
+                                    $query = "SELECT * FROM `questionnaire-temp`";
+                                    $stmt = $conn->prepare($query);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    while ($row = $result->fetch_assoc()) {
+                                        $row_text = $row['questionnaire_name'];
+                                        if($row_text != $questionnaire_name){
+                                            echo "<option>$row_text</option>";
+                                        }
+                                    }
+                                }
+                                
+                            ?>
                         </select>
                     </form>
                 </div>    
                 <h3>E-mail dos participantes:</h3>
                 <div class="center">
                     <div class="textarea-container">
-                    <textarea class="alunos">aluno1@universidade.exemplo
-aluno123@universidade.exemplo
-aluno12345@universidade.exemplo
-aluno123@universidade.exemplo
-aluno1@universidade.exemplo
-aluno123@universidade.exemplo
-aluno12345@universidade.exemplo
-aluno123@universidade.exemplo
-aluno1@universidade.exemplo
-aluno123@universidade.exemplo
-aluno12345@universidade.exemplo
-aluno123@universidade.exemplo
-aluno1@universidade.exemplo
-aluno123@universidade.exemplo</textarea>
+                    <textarea class="alunos" readonly><?php
+                        $stmt = $conn->prepare("SELECT * FROM `user_class_relation-temp` WHERE class_id = ? AND subject_id = ?");
+                        $stmt->bind_param("ss", $class_id, $subject_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $rows = [];
+                        while ($row = $result->fetch_assoc()) {
+                            $user_id = $row['user_id'];
+                            $query_user_info = "SELECT * FROM `user-temp` WHERE user_id = ?";
+                            $stmt_user_info = $conn->prepare($query_user_info);
+                            $stmt_user_info->bind_param("s", $user_id);
+                            $stmt_user_info->execute();
+                            $result_user_info = $stmt_user_info->get_result();
+                            $row = $result_user_info->fetch_assoc();
+                            $email = $row['email'];
+                            $rows[] = $email;
+                        }
+                        $text = implode("\n", $rows);
+                        echo trim($text);
+                        ?>
+                    </textarea>
                     </div>
                 </div>
                 <div class="survey_buttons">
                     <a class="button_negative" href='nova_instancia_2.php' id="survey_negative">VOLTAR</a>
-                    <form action="nova_instancia_2.php">
-                        <button type="submit" id="survey_positive">PROSSEGUIR</button>
-                    <form>
+                    <button type="submit" id="survey_positive" form="editar_classe">PROSSEGUIR</button>
                 </div>
             </div>
         </div>

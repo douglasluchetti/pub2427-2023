@@ -56,40 +56,52 @@ $course_info = "Administrador do Sistema - $username";
             </div>
             <div class="master">
                 <h3>Insira um nome para a nova instância de avaliação (exemplo: 20241):</h3>
-                <input class="login" type="text" id="suject_name" placeholder="Nome da Instância" required>
+                <form id="criar_instancia" action="../controllers/criar_instancia.php" method="POST">
+                    <input class="login" type="text" id="subject_name" name="instance_id" placeholder="Nome da Instância" required>
+                </form>
                 <h3>Questionário:</h3>
                 <h4 id="subtitle_index_admin_2">Selecione o questionário comum que será utilizado nas disciplinas. Para questionários específicos - por exemplo, utilizados em turmas de laboratório ou de trabalho de formatura - altere o questionário diretamente nas configurações da turma.</h4>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
-                        <select class="select_instance" name="instance_id" id="instance">
-                            <option>Questionário_padrão.xlsx</option>   
-                            <option>Questionário_laboratório.xlsx</option>   
+                        <select class="select_instance" name="questionnaire_name" id="instance" required form="criar_instancia">
+                        <option disabled selected value> -- Selecione um questionário -- </option>
+                        <?php
+                            $query = "SELECT * FROM `questionnaire-temp`";
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            while ($row = $result->fetch_assoc()) {
+                                $row_text = $row['questionnaire_name'];
+                                echo "<option>$row_text</option>";
+                            }
+                        ?>
                         </select>
                     </form>
                 </div>   
                 <h3>Turmas identificadas:</h3>
-                <div class="inline_content">
-                    <li>20241 - ABC1111 - Disciplina Exemplo 1</li>
-                    <a class="logout" href="nova_instancia_3.php">
-                        <img src="..\images\config.svg" alt="Config" class="close">
-                    </a>
-                </div>
-                <div class="inline_content">
-                    <li>20241 - ABC2222 - Disciplina Exemplo 2</li>
-                    <a class="logout" href="nova_instancia_3.php">
-                        <img src="..\images\config.svg" alt="Config" class="close">
-                    </a>
-                </div>
-                <div class="inline_content">
-                    <li>20242 - ABC2222 - Disciplina Exemplo 2</li>
-                    <a class="logout" href="nova_instancia_3.php">
-                        <img src="..\images\config.svg" alt="Config" class="close">
-                    </a>
-                </div>
+                <?php
+                    $query = "SELECT * FROM `class-temp`";
+                    $stmt = $conn->prepare($query);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                        $row_text = $row['class_id'] . " - " . $row['subject_id'] . " - " . $row['subject_name'];
+                        $class_id = $row['class_id'];
+                        $subject_id = $row['subject_id'];
+                        echo "<form class='inline_content' method='POST' action='nova_instancia_3.php'>";
+                        echo "   <li>$row_text</li>";
+                        echo "   <input type='hidden' name='class_id' value=$class_id>";
+                        echo "   <input type='hidden' name='subject_id' value=$subject_id>";
+                        echo "   <button class='image-button' type=submit';>";
+                        echo "   <img src='..\images\config.svg' alt='Config' class='close'>";
+                        echo "   </button>";
+                        echo "</form>";
+                    }
+                ?>
                 <div class="survey_buttons">
                     <a class="button_negative" href='nova_instancia_1.php' id="survey_negative">VOLTAR</a>
-                    <form action="index_master.php">
-                        <button type="submit" id="survey_positive" action="index_master.php">ENVIAR</button>
+                    <form>
+                        <button type="submit" id="survey_positive" action="index_master.php" form="criar_instancia">ENVIAR</button>
                     <form>
                 </div>
             </div>
@@ -103,7 +115,16 @@ $course_info = "Administrador do Sistema - $username";
     </div>
 </body>
 </html>
-
+<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('criar_instancia').addEventListener('submit', function(event) {
+                    var confirmation = confirm('Tem certeza de que deseja criar a nova intância de avaliação? Uma vez feita, a instância não poderá ser alterada.');
+                    if (!confirmation) {
+                        event.preventDefault();
+                    }
+                });
+            });
+</script>
 <?php
 $conn->close();
 ?>

@@ -59,7 +59,7 @@ $course_info = "Administrador do Sistema - $username";
                     UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image">
                 </label>
                 <input type="hidden" name="import">
-                <input name="file" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()">
+                <input name="file[]" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()">
             </form>
 
         
@@ -71,14 +71,18 @@ $course_info = "Administrador do Sistema - $username";
                     $stmt = $conn->prepare($query);
                     $stmt->execute();
                     $result = $stmt->get_result();
+                    if($result->num_rows == 0){
+                        echo "<h4>Nenhuma lista adicionada.</h4>";
+                    }
                     while ($row = $result->fetch_assoc()) {
                         $file = $row['file'];
-                        echo "<div class='inline_content'>";
+                        echo "<form class='inline_content' action='../controllers/excluir_arquivo.php' method='POST'>";
+                        echo "   <input type='hidden' name='file' value=$file>";
                         echo"    <li>$file</li>";
-                        echo"    <a class='logout' href=''>";
+                        echo "   <button class='image-button' type=submit';>";
                         echo"        <img src='..\images\delete.svg' alt='Delete' class='close'>";
-                        echo"    </a>";
-                        echo"</div>";
+                        echo "   </button>";
+                        echo"</form>";
                     }
                     
                 ?>
@@ -88,14 +92,18 @@ $course_info = "Administrador do Sistema - $username";
                     $stmt = $conn->prepare($query);
                     $stmt->execute();
                     $result = $stmt->get_result();
+                    if($result->num_rows == 0){
+                        echo "<h4>Nenhum questionário adicionado.</h4>";
+                    }
                     while ($row = $result->fetch_assoc()) {
                         $file = $row['file'];
-                        echo "<div class='inline_content'>";
+                        echo "<form class='inline_content' action='../controllers/excluir_arquivo.php' method='POST'>";
+                        echo "   <input type='hidden' name='file' value=$file>";
                         echo"    <li>$file</li>";
-                        echo"    <a class='logout' href=''>";
+                        echo "   <button class='image-button' type=submit';>";
                         echo"        <img src='..\images\delete.svg' alt='Delete' class='close'>";
-                        echo"    </a>";
-                        echo"</div>";
+                        echo "   </button>";
+                        echo"</form>";
                     }
                 ?>
                 <div class="survey_buttons">
@@ -115,7 +123,19 @@ $course_info = "Administrador do Sistema - $username";
     </div>
 </body>
 </html>
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var forms = document.getElementsByClassName('inline_content');
+    for (var i = 0; i < forms.length; i++) {
+        forms[i].addEventListener('submit', function(event) {
+            var confirmation = confirm('Tem certeza de que deseja remover o arquivo selecionado?');
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    }
+});
+</script>
 <?php
 $conn->close();
 ?>

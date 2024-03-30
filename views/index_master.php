@@ -112,9 +112,10 @@ $instance_off = FALSE;
                                         <img src="..\images\upload.svg" alt="Upload" class="close">
                                     </a>
                                 </div>
-                                <div class="center">
+                                <form class="center" action="..\controllers\iniciar_instancia.php" method="POST">
+                                    <input type="hidden" name="instance_id" value="<?php echo $instance_id; ?>">
                                     <button type="submit">INICIAR INSTÂNCIA DE AVALIAÇÃO</button>
-                                </div>
+                                </form>
                             <?php
                         } elseif ($instance_status == 1) {
                             ?>
@@ -133,9 +134,10 @@ $instance_off = FALSE;
                                         <img src="..\images\upload.svg" alt="Upload" class="close">
                                     </a>
                                 </div>
-                                <div class="center">
+                                <form class="center" action="..\controllers\encerrar_instancia.php" method="POST">
+                                    <input type="hidden" name="instance_id" value="<?php echo $instance_id; ?>">
                                     <button type="submit">ENCERRAR INSTÂNCIA DE AVALIAÇÃO</button>
-                                </div>
+                                </form>
                             <?php
                         } elseif ($instance_status == 2) {
                             ?>
@@ -168,7 +170,19 @@ $instance_off = FALSE;
     </div>
 </body>
 </html>
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var forms = document.getElementsByClassName('center');
+    for (var i = 0; i < forms.length; i++) {
+        forms[i].addEventListener('submit', function(event) {
+            var confirmation = confirm('Tem certeza que deseja iniciar / encerrar a instância selecionada? Uma vez feita, essa ação não pode ser desfeita.');
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    }
+});
+</script>
 <?php
 $conn->close();
 ?>

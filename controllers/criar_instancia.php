@@ -36,11 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'alternative' => ['alternative_id', 'content'],
         'class' => ['class_id', 'subject_id', 'subject_name', 'teacher_name'],
         'instance_questionnaire_class_relation' => ['instance_id', 'questionnaire_id', 'class_id', 'subject_id'],
-        'question' => ['question_id', 'question_type', 'title', 'content', 'alternative_1', 'alternative_2', 'alternative_3', 'alternative_4', 'alternative_5', 'alternative_6'],
+        'question' => ['question_id', 'question_type', 'title', 'content'],
         'questionnaire'=> ['questionnaire_id', 'questionnaire_name'],
         'questionnaire_question_relation' => ['questionnaire_id', 'question_id'],
         'question_alternative_relation' => ['question_id', 'alternative_id'],
-        'user' => ['user_id', 'user_type', 'name', 'password', 'email', 'course'],
+        'user' => ['user_id', 'user_type', 'name', 'password', 'email',],
         'user_class_relation' => ['user_id', 'class_id', 'subject_id'],
     ];
     

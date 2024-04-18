@@ -21,9 +21,8 @@ $query_user_info = "SELECT * FROM user WHERE user_id = ?";
 $result_user_info = executeQuery($conn, $query_user_info, $username);
 $row = $result_user_info->fetch_assoc();
 $name = $row['name'];
-$course = $row['course'];
 $welcome_message = "Olá, $name";
-$course_info = "$course - $username";
+$course_info = "$username";
 
 $query_user_class = "SELECT * FROM user_class_relation WHERE user_id = ?";
 $result_user_rows = executeQuery($conn, $query_user_class, $username);

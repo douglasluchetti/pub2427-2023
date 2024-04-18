@@ -17,7 +17,6 @@ $stmt_user_info->execute();
 $result_user_info = $stmt_user_info->get_result();
 $row = $result_user_info->fetch_assoc();
 $name = $row['name'];
-$course = $row['course'];
 $welcome_message = "Olá, $name";
 $course_info = "Administrador do Sistema - $username";
 

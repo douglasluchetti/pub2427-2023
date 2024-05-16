@@ -138,9 +138,15 @@ $subject_name = $class_row['subject_name'];
                         $rows = [];
                         while ($row = $result->fetch_assoc()) {
                             $user_id = $row['user_id'];
-                            $query_user_info = "SELECT * FROM `user-temp` WHERE user_id = ?";
+                            $query_user_info = "SELECT user_id, user_type, name, password, email, course, file
+                            FROM `user-temp`
+                            WHERE user_id = ?
+                            UNION ALL
+                            SELECT user_id, user_type, name, password, email, course, NULL
+                            FROM `user`
+                            WHERE user_id = ?";
                             $stmt_user_info = $conn->prepare($query_user_info);
-                            $stmt_user_info->bind_param("s", $user_id);
+                            $stmt_user_info->bind_param("ss", $user_id, $user_id);
                             $stmt_user_info->execute();
                             $result_user_info = $stmt_user_info->get_result();
                             $row = $result_user_info->fetch_assoc();

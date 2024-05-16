@@ -7,6 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $questionnaire_name = $_POST['questionnaire_name'];
     $instance_id = $_POST['instance_id'];
+    $instance_date_beginning = $_POST['instance_date_beginning'];
+    $instance_date_beginning = date('Y-m-d H:i:s', strtotime($instance_date_beginning));
+    $instance_date_end = $_POST['instance_date_end'];
+    $instance_date_end = date('Y-m-d H:i:s', strtotime($instance_date_end));
 
     //Obtem o id do questionário padrão:
     $query = "SELECT * FROM `questionnaire-temp` WHERE `questionnaire_name`=?";
@@ -28,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     //Cria a instância:
-    $stmt = $conn->prepare("INSERT INTO `instance` (`instance_id`, `status`) VALUES (?, 0)");
-            $stmt->bind_param("s", $instance_id);
-            $stmt->execute();
+    $stmt = $conn->prepare("INSERT INTO `instance` (`instance_id`, `status`, `instance_date_beginning`, `instance_date_end`) VALUES (?, 0, ?, ?)");
+    $stmt->bind_param("sss", $instance_id, $instance_date_beginning, $instance_date_end);
+    $stmt->execute();
 
     $tables = [
         'alternative' => ['alternative_id', 'content'],

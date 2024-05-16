@@ -20,7 +20,17 @@ $name = $row['name'];
 $welcome_message = "Olá, $name";
 $course_info = "Administrador do Sistema - $username";
 
-$query_instance = "SELECT * FROM instance ORDER BY instance_id DESC";
+$query_instance = "SELECT * FROM instance";
+$stmt_instance = $conn->prepare($query_instance);
+$stmt_instance->execute();
+$result_instance = $stmt_instance->get_result();
+
+if ($result_instance->num_rows > 0 && empty($_SESSION['instance_id'])) {
+    $row = $result_instance->fetch_assoc();
+    $_SESSION['instance_id'] = $row['instance_id'];
+}
+
+$query_instance = "SELECT * FROM instance";
 $stmt_instance = $conn->prepare($query_instance);
 $stmt_instance->execute();
 $result_instance = $stmt_instance->get_result();
@@ -63,9 +73,12 @@ $instance_off = FALSE;
             </div>
             <div class="master">
                 <h3>Ações sobre os questionários da instância selecionada:</h3>
+                <?php
+                 if ($result_instance->num_rows > 0) {
+                    ?>
                 <div class="center">
                     <form class="select" id="select_instance" action="../controllers/mudar_instancia.php" method="POST">
-                        <select class="select_instance" name="instance_id" id="instance" onchange="this.form.submit()">
+                    <select class="select_instance" name="instance_id" id="instance" onchange="this.form.submit()">
                         <?php
                             if (!empty($_SESSION['instance_id'])) {
                                     ?>
@@ -94,70 +107,91 @@ $instance_off = FALSE;
                         $result_user_info = $stmt_user_info->get_result();
                         $row = $result_user_info->fetch_assoc();
                         $instance_status = $row['status'];
-                        if ($instance_status == 0) {
-                            ?>
-                            <h3 class="instance_status" id="waiting">Aguardando abertura. Questionários fechados.</h3>
-                                </div>
+                        $instance_date_beginning = $row['instance_date_beginning'];
+                        $instance_date_end = $row['instance_date_end'];
+
+                            if ($instance_status == 0) {
+                                ?>
+                                <h3 class="instance_status" id="waiting">Aguardando abertura. Questionários fechados.</h3>
+                                    </div>
                                 <div class="inline_content">
-                                    <li>Configurar questionários, disciplinas e alunos da instância</li>
-                                    <a class="logout" href="">
-                                        <img src="..\images\config.svg" alt="Config" class="close">
-                                    </a>
-                                </div>   
-                                <h3>Atulização de bases:</h3>
-                                <div class="inline_content">
-                                    <li>Emails_docentes.xlsx</li>
-                                    <a class="logout" href="">
-                                        <img src="..\images\upload.svg" alt="Upload" class="close">
-                                    </a>
+                                    <h3>Programação:</h3>
+                                    <h3 class="instance_status" id="waiting"><?php echo date('d/m/Y H:i', strtotime(substr($instance_date_beginning, 0, -3))); ?></h3>
+                                    <h3>até</h3>
+                                    <h3 class="instance_status" id="waiting"><?php echo date('d/m/Y H:i', strtotime(substr($instance_date_end, 0, -3))); ?></h3>
                                 </div>
-                                <form class="center" action="..\controllers\iniciar_instancia.php" method="POST">
-                                    <input type="hidden" name="instance_id" value="<?php echo $instance_id; ?>">
-                                    <button type="submit">INICIAR INSTÂNCIA DE AVALIAÇÃO</button>
-                                </form>
-                            <?php
-                        } elseif ($instance_status == 1) {
-                            ?>
-                            <h3 class="instance_status" id="open">Iniciada. Questionários abertos.</h3>
-                                </div>
+                                    <!-- <h3>Atulização de bases:</h3>
+                                    <div class="inline_content">
+                                        <li>Emails_docentes.xlsx</li>
+                                        <a class="logout" href="">
+                                            <img src="..\images\upload.svg" alt="Upload" class="close">
+                                        </a>
+                                    </div> -->
+                                    <form class="center" action="..\controllers\iniciar_instancia.php" method="POST">
+                                        <input type="hidden" name="instance_id" value="<?php echo $instance_id; ?>">
+                                        <button type="submit">INICIAR INSTÂNCIA DE AVALIAÇÃO</button>
+                                    </form>
+                                <?php
+                            } elseif ($instance_status == 1) {
+                                ?>
+                                <h3 class="instance_status" id="open">Iniciada. Questionários abertos.</h3>
+                                    </div>
                                 <div class="inline_content">
-                                    <li>Acompanhar volume de respostas</li>
-                                    <a class="logout" href="">
-                                        <img src="..\images\edit.svg" alt="edit" class="close">
-                                    </a>
-                                </div>   
-                                <h3>Atulização de bases:</h3>
-                                <div class="inline_content">
-                                    <li>Emails_docentes.xlsx</li>
-                                    <a class="logout" href="">
-                                        <img src="..\images\upload.svg" alt="Upload" class="close">
-                                    </a>
+                                    <h3>Programação:</h3>
+                                    <h3 class="instance_status" id="waiting"><?php echo date('d/m/Y H:i', strtotime(substr($instance_date_beginning, 0, -3))); ?></h3>
+                                    <h3>até</h3>
+                                    <h3 class="instance_status" id="waiting"><?php echo date('d/m/Y H:i', strtotime(substr($instance_date_end, 0, -3))); ?></h3>
                                 </div>
-                                <form class="center" action="..\controllers\encerrar_instancia.php" method="POST">
-                                    <input type="hidden" name="instance_id" value="<?php echo $instance_id; ?>">
-                                    <button type="submit">ENCERRAR INSTÂNCIA DE AVALIAÇÃO</button>
-                                </form>
-                            <?php
-                        } elseif ($instance_status == 2) {
-                            ?>
-                            <h3 class="instance_status" id="closed">Encerrada. Questionários fechados.</h3>
-                                </div>
+                                    <form class="inline_content" method='POST' action='volume_respostas.php'>
+                                        <li>Acompanhar volume de respostas</li>
+                                        <input type='hidden' name='instance_id' value=<?php echo $instance_id; ?>>
+                                        <button class='image-button' type='submit'>
+                                                <img src='..\images\edit.svg' alt='edit' class='close'>
+                                        </button>
+                                    </form>   
+                                    <!-- <h3>Atulização de bases:</h3>
+                                    <div class="inline_content">
+                                        <li>Emails_docentes.xlsx</li>
+                                        <a class="logout" href="">
+                                            <img src="..\images\upload.svg" alt="Upload" class="close">
+                                        </a>
+                                    </div> -->
+                                    <form class="center" action="..\controllers\encerrar_instancia.php" method="POST">
+                                        <input type="hidden" name="instance_id" value="<?php echo $instance_id; ?>">
+                                        <button type="submit">ENCERRAR INSTÂNCIA DE AVALIAÇÃO</button>
+                                    </form>
+                                <?php
+                            } elseif ($instance_status == 2) {
+                                ?>
+                                <h3 class="instance_status" id="closed">Encerrada. Questionários fechados.</h3>
+                                    </div>
                                 <div class="inline_content">
-                                    <li>Enviar relatórios para os e-mails de docentes cadastrados</li>
-                                    <a class="logout" href="">
-                                        <img src="..\images\email.svg" alt="email" class="close">
-                                    </a>
-                                </div>   
-                                <div class="inline_content">
-                                    <li>Fazer download de todos os relatórios</li>
-                                    <a class="logout" href="">
-                                        <img src="..\images\download.svg" alt="Download" class="close">
-                                    </a>
+                                    <h3>Programação:</h3>
+                                    <h3 class="instance_status" id="waiting"><?php echo date('d/m/Y H:i', strtotime(substr($instance_date_beginning, 0, -3))); ?></h3>
+                                    <h3>até</h3>
+                                    <h3 class="instance_status" id="waiting"><?php echo date('d/m/Y H:i', strtotime(substr($instance_date_end, 0, -3))); ?></h3>
                                 </div>
-                            <?php
+                                    <!-- <div class="inline_content">
+                                        <li>Enviar relatórios para os e-mails de docentes cadastrados</li>
+                                        <a class="logout" href="">
+                                            <img src="..\images\email.svg" alt="email" class="close">
+                                        </a>
+                                    </div>    -->
+                                    <form class="inline_content" method='POST' action='../controllers/download_tabela.php' target="_blank">
+                                        <li>Fazer download de todas as respostas da instância</li>
+                                        <input type='hidden' name='instance_id' value=<?php echo $instance_id; ?>>
+                                        <button class='image-button' type='submit'>
+                                                <img src='..\images\download.svg' alt='download' class='close'>
+                                        </button>
+                                    </form>   
+                                <?php
+
+                            } 
+                        } else {
+                            echo "<h3>Nenhuma instância de avaliação encontrada.</h3>";
                         }
-                    ?>
-                    
+                       ?>
+                </div> 
             </div>
         </div>
     </div>

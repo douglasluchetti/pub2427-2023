@@ -54,9 +54,15 @@ $course_info = "Administrador do Sistema - $username";
                 <h3 class="survey">Verifique as informações encontradas para cada disciplina</h3>
             </div>
             <div class="master">
-                <h3>Insira um nome para a nova instância de avaliação (exemplo: 20241):</h3>
                 <form id="criar_instancia" action="../controllers/criar_instancia.php" method="POST">
+                    <h3>Insira um nome para a nova instância de avaliação (exemplo: 20241):</h3>
                     <input class="login" type="text" id="subject_name" name="instance_id" placeholder="Nome da Instância" required>
+                    <h3>Insira as datas e horários de início e encerramento da instância:</h3>
+                    <div class="survey_buttons">
+                        <input class="login" type="datetime-local" id="instance_date_beginning" name="instance_date_beginning" required>
+                        <h4>até</h4>
+                        <input class="login" type="datetime-local" id="instance_date_end" name="instance_date_end" required>
+                    </div>
                 </form>
                 <h3>Questionário:</h3>
                 <h4 id="subtitle_index_admin_2">Selecione o questionário comum que será utilizado nas disciplinas. Para questionários específicos - por exemplo, utilizados em turmas de laboratório ou de trabalho de formatura - altere o questionário diretamente nas configurações da turma.</h4>
@@ -115,14 +121,42 @@ $course_info = "Administrador do Sistema - $username";
 </body>
 </html>
 <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('criar_instancia').addEventListener('submit', function(event) {
-                    var confirmation = confirm('Tem certeza de que deseja criar a nova intância de avaliação? Uma vez feita, a instância não poderá ser alterada.');
-                    if (!confirmation) {
-                        event.preventDefault();
-                    }
-                });
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('criar_instancia').addEventListener('submit', function(event) {
+        var today = new Date();
+        var todayStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0') + 'T' + String(today.getHours()).padStart(2, '0') + ':' + String(today.getMinutes()).padStart(2, '0');
+        var beginningDateStr = document.getElementById("instance_date_beginning").value;
+        var endDateStr = document.getElementById("instance_date_end").value;
+
+        console.log('Today:', todayStr);
+        console.log('Beginning:', beginningDateStr);
+        console.log('End:', endDateStr);
+
+        if (beginningDateStr < todayStr || endDateStr < todayStr) {
+            console.log('A data deve ser maior que a data atual.');
+            alert('A data deve ser maior que a data atual.');
+            event.preventDefault();
+            return;
+        }
+
+        if (endDateStr <= beginningDateStr) {
+            console.log('A data de término deve ser maior que a data de início.');
+            alert('A data de término deve ser maior que a data de início.');
+            event.preventDefault();
+            return;
+        }
+
+        var confirmation = confirm('Tem certeza de que deseja criar a nova intância de avaliação? Uma vez feita, a instância não poderá ser alterada.');
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    });
+
+    var today = new Date();
+    var todayStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+    document.getElementById("instance_date_beginning").setAttribute('min', todayStr);
+    document.getElementById("instance_date_end").setAttribute('min', todayStr);
+});
 </script>
 <?php
 $conn->close();

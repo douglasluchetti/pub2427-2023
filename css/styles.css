@@ -394,6 +394,7 @@ h4.alternative{
     align-self: stretch;
     margin: 0px 40px 0px 40px;
     justify-content: space-between;
+    align-items: center;
 }
 
 #survey_negative{
@@ -564,4 +565,23 @@ div.textarea-container {
 
 textarea:focus {
     outline: none;
+}
+
+#criar_instancia{
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 16px;
+}
+
+input[type="datetime-local"] {
+    width: 200px;
+    height: 48px;
+    padding: 13px 38px 13px 16px;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid var(--On-Surface-Low-Emphasis);
+    background: var(--Surface);
 }

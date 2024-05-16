@@ -81,7 +81,7 @@ $instance_off = FALSE;
                 $result_instance = $stmt_instance2->get_result();
                 $instance_row2 = $result_instance->fetch_assoc();
 
-                if ($instance_row2['status'] == 0) {
+                if ($instance_row2['status'] == 0 | $instance_row2['status'] == 2) {
                     if ($instance_off == FALSE) {
                     echo "<h3>Não há disciplinas a serem avaliadas / período de avaliação encerrado.</h3>";
                     };

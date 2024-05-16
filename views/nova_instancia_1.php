@@ -58,7 +58,7 @@ $course_info = "Administrador do Sistema - $username";
                     UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image">
                 </label>
                 <input type="hidden" name="import">
-                <input name="file[]" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()">
+                <input name="file[]" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()" required>
             </form>
 
         

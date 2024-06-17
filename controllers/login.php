@@ -20,6 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start(); // Inicia a sessão após a autenticação bem-sucedida
 
         $user_data = $result->fetch_assoc();
+        $query_user_info = "SELECT * FROM user WHERE user_id=? OR email=?";
+        $stmt = $conn->prepare($query_user_info);
+        $stmt->bind_param("ss", $username, $username);
+        $stmt->execute();
+        $result_user_info = $stmt->get_result();
+        $row = $result_user_info->fetch_assoc();
+        $username = $row['user_id'];
         $_SESSION['username'] = $username;
 
         if ($user_data['user_type'] == 0) {

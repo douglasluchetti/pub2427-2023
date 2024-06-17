@@ -28,7 +28,7 @@ $query_user_class = "SELECT * FROM user_class_relation WHERE user_id = ?";
 $result_user_rows = executeQuery($conn, $query_user_class, $username);
 
 
-$instance_off = FALSE;
+$instance_off = TRUE;
 
 ?>
 
@@ -82,10 +82,6 @@ $instance_off = FALSE;
                 $instance_row2 = $result_instance->fetch_assoc();
 
                 if ($instance_row2['status'] == 0 | $instance_row2['status'] == 2) {
-                    if ($instance_off == FALSE) {
-                    echo "<h3>Não há disciplinas a serem avaliadas / período de avaliação encerrado.</h3>";
-                    };
-                    $instance_off = True;
                 } else {
                     $query_class_info = "SELECT * FROM class WHERE class_id = ? AND subject_id = ?";
                     $stmt_class_info = $conn->prepare($query_class_info);
@@ -113,6 +109,7 @@ $instance_off = FALSE;
                             $stmt->execute();
                             $result = $stmt->get_result();
                             $class_row = $result->fetch_assoc();
+                            $instance_off = FALSE;
                             if ($result->num_rows == 0) {
                                 echo "<button type='submit'>AVALIAR</button>";
                             }
@@ -124,6 +121,9 @@ $instance_off = FALSE;
                     <?php
                 }
             }
+            if ($instance_off == TRUE) {
+                echo "<h3>Não há disciplinas a serem avaliadas / período de avaliação encerrado.</h3>";
+                };
             ?>
         </div>
     </div>

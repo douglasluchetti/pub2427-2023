@@ -72,7 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Success sent message alert
     if ($mail->send()) {
-        header("Location: ../views/nova_senha_gerada.php");
+        session_start();
+        $_SESSION['new_password'] = TRUE;
+        header("Location: ../index.php");
+        exit();
     } else {
         echo
         " 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
@@ -37,7 +37,7 @@ div.header{
     margin: 0; 
 }
 
-div.logo_name{
+.logo_name{
     display: flex;
     width: 100%; 
     height: 86%;
@@ -79,8 +79,8 @@ div.content {
   }
 
 .title_reset-password{
-    align-self: auto;
-    margin-bottom: 24px;
+    align-self: auto; 
+    margin-bottom: -16px;
 }
 
 .text_reset-password{
@@ -164,12 +164,12 @@ button{
 }
 
 button:hover{
-    border-radius: 8px;
-    border: 1px solid var(--Primary-Darker);
-    background-color: var(--Surface);
-    color: var(--Primary-Darker);
-    box-shadow: 0px, 0px, 0px, 0px;
+    box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+
+.button_negative:hover{
+    box-shadow: inset 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
 }
 
 .button_negative{
@@ -272,6 +272,7 @@ div.block#login{
     width: 393px;
     gap: 10px;
     padding: 0px;
+    margin: 42px;
 }
 
 div.block#index{
@@ -320,7 +321,7 @@ h2{
     font-family: Archivo;
     font-size: 26px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 36px; /* 105.882% */
     align-self: stretch;
     margin: 0;
@@ -588,4 +589,37 @@ input[type="datetime-local"] {
 
 #logout{
     width: 103.6px;
+}
+
+.info{
+    display: inline-flex;
+    padding: 38px 66px;
+    justify-content: center;
+    align-items: left;
+    gap: 10px;
+    flex-direction: column;
+    border: 6px dashed var(--Primary-Default, #FCB421);
+    width: 50%;
+}
+
+.h4-info{
+    color: var(--Primary-Darker, #E38D13);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Archivo;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 120% */
+    letter-spacing: 0.15px;
+}
+
+p{
+    color: var(--Primary-Darker, #E38D13);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Archivo;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 24px;
+    letter-spacing: 0.15px;
 }

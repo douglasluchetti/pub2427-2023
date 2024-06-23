@@ -55,9 +55,12 @@ $instance_off = TRUE;
                 <h3><?php echo $welcome_message; ?></h3>
                 <h4><?php echo $course_info; ?></h4>
             </div>
-            <a class="logout" href="..\controllers\logout.php">
-                <img src="..\images\logout.svg" alt="Logout" class="logout">
-            </a>
+            <form class="logout" action="..\controllers\logout.php" method="POST">
+                <input type="submit" id="file-upload" style="display: none;">   
+                <label for="file-upload" class="button_negative" id="logout">
+                    Sair <img src="..\images\logout.svg" alt="logout" class="button_image">
+                </label>
+            </form>
         </div>
         <div class="block" id="index">
             <?php

@@ -585,3 +585,7 @@ input[type="datetime-local"] {
     border: 1px solid var(--On-Surface-Low-Emphasis);
     background: var(--Surface);
 }
+
+#logout{
+    width: 103.6px;
+}

@@ -172,6 +172,12 @@ button:hover{
     box-shadow: inset 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
 }
 
+.button_negative.button_disabled {
+    color: var(--On-Surface-Medium-Emphasis);
+    border: 1px solid var(--On-Surface-Medium-Emphasis);
+    cursor: not-allowed;
+}
+
 .button_negative{
     display: flex;
     width: 303.6px;
@@ -405,6 +411,7 @@ h4.alternative{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
 }
 
@@ -425,6 +432,15 @@ h4.alternative{
 #preview-form{
     width: 128px;
     margin-left: 48px;
+}
+
+.inline_buttons{
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
 }
 
 #waiting{

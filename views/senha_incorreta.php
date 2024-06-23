@@ -3,6 +3,7 @@
     <head>
         <title>Avaliação de Disciplinas</title>
         <meta charset="utf-8">
+    <link rel="icon" href="../images/logo.svg">
         <link rel="stylesheet" href="..\css\styles.css" type="text/css">
     </head>
     <body>

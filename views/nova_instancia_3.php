@@ -41,6 +41,7 @@ $subject_name = $class_row['subject_name'];
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
+    <link rel="icon" href="../images/logo.svg">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
 <body>
@@ -130,6 +131,10 @@ $subject_name = $class_row['subject_name'];
                             ?>
                         </select>
                     </form>
+                    <form id="preview-form" class="center" action="visualizar_questionario.php" method="POST" enctype="multipart/form-data" target="_blank">
+                        <button class="button_negative" id="preview-button"> VISUALIZAR </button>
+                        <input type="hidden" name="questionnaire_name" id="selected_instance" required>
+                    </form>
                 </div>    
                 <h3>E-mail dos participantes:</h3>
                 <div class="center">
@@ -178,6 +183,36 @@ $subject_name = $class_row['subject_name'];
     </div>
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const selectInstance = document.getElementById('instance');
+    const previewButton = document.getElementById('preview-button');
+    const selectedInstanceInput = document.getElementById('selected_instance');
+
+    function updatePreviewButtonState() {
+        if (!selectedInstanceInput.value) {
+            previewButton.disabled = true;
+            previewButton.classList.add('button_disabled');
+        } else {
+            previewButton.disabled = false;
+            previewButton.classList.remove('button_disabled');
+        }
+    }
+
+    // Adiciona o evento 'change' ao selectInstance para atualizar o estado do botão
+    selectInstance.addEventListener('change', function() {
+        selectedInstanceInput.value = this.value;
+        updatePreviewButtonState();
+    });
+
+    // Chama updatePreviewButtonState() para definir o estado inicial do botão
+    updatePreviewButtonState();
+});
+
+    document.getElementById('instance').addEventListener('change', function() {
+    document.getElementById('selected_instance').value = this.value;
+    });
+</script>
 
 <?php
 $conn->close();

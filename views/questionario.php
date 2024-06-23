@@ -50,6 +50,7 @@ $num_questions = 1;
 <head>
         <title>Avaliação de Disciplinas</title>
         <meta charset="utf-8">
+    <link rel="icon" href="../images/logo.svg">
         <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
     <body>
@@ -68,9 +69,12 @@ $num_questions = 1;
                     <h3><?php echo $welcome_message; ?></h3>
                     <h4><?php echo $course_info; ?></h4>
                 </div>
-                <a class="logout" href="..\controllers\logout.php">
-                    <img src="..\images\logout.svg" alt="Logout" class="logout">
-                </a>
+                <form class="logout" action="..\controllers\logout.php" method="POST">
+                    <input type="submit" id="logout" style="display: none;">   
+                    <label for="logout" class="button_negative" id="logout">
+                        Sair <img src="..\images\logout.svg" alt="logout" class="button_image">
+                    </label>
+                </form>
             </div>
             <form class="block" id="survey" action="..\controllers\envia_questionario.php" method="POST">
                 <div class="survey_title">  
@@ -158,13 +162,6 @@ $num_questions = 1;
                         <div class="form__group field">
                             <textarea class="form__field" name=<?php echo "$question_id"; ?> ></textarea>
                         </div>              
-                        <script>
-                        const textarea = document.getElementById('message');
-                        textarea.addEventListener('input', function () {
-                        this.style.height = '20px';
-                        this.style.height = (this.scrollHeight) + 'px';
-                        });
-                        </script>
                     </div>
                 <?php
                 }
@@ -184,6 +181,17 @@ $num_questions = 1;
             </div>
         </div>
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                            const textareas = document.getElementsByClassName('form__field');
+                            for (let i = 0; i < textareas.length; i++) {
+                                textareas[i].addEventListener('input', function() {
+                                    this.style.height = '20px'; // Reset the height
+                                    this.style.height = this.scrollHeight + 'px'; // Set to the current scroll height
+                                });
+                                // Disparar manualmente o evento 'input' para cada textarea
+                                textareas[i].dispatchEvent(new Event('input'));
+                            }
+                        });
             document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('survey').addEventListener('submit', function(event) {
                     var confirmation = confirm('Tem certeza de que deseja enviar o formulário?');

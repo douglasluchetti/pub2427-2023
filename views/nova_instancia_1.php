@@ -26,6 +26,7 @@ $course_info = "Administrador do Sistema - $username";
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
+    <link rel="icon" href="../images/logo.svg">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
 <body>
@@ -45,7 +46,7 @@ $course_info = "Administrador do Sistema - $username";
                 <h4><?php echo $course_info; ?></h4>
             </div>
             <form class="logout" action="..\controllers\logout.php" method="POST">
-                <input type="submit" id="flogoutd" style="display: none;">   
+                <input type="submit" id="logout" style="display: none;">   
                 <label for="logout" class="button_negative" id="logout">
                     Sair <img src="..\images\logout.svg" alt="logout" class="button_image">
                 </label>
@@ -78,16 +79,19 @@ $course_info = "Administrador do Sistema - $username";
                     }
                     while ($row = $result->fetch_assoc()) {
                         $file = $row['file'];
-                        echo "<form class='inline_content' action='../controllers/excluir_arquivo.php' method='POST'>";
-                        echo "   <input type='hidden' name='file' value=$file>";
-                        echo"    <li>$file</li>";
-                        echo "   <button class='image-button' type=submit';>";
-                        echo"        <img src='..\images\delete.svg' alt='Delete' class='close'>";
-                        echo "   </button>";
-                        echo"</form>";
+                        ?>
+                        <div class=inline_content>
+                            <li><?php echo "$file"?></li>
+                            <form class='confirm' action='../controllers/excluir_arquivo.php' method='POST'>
+                                <input type='hidden' name='file' value='<?php echo "$file"?>'>
+                                <button class='image-button' type=submit>
+                                    <img src='..\images\delete.svg' alt='Delete' class='close'>
+                                </button>
+                            </form>
+                        </div>
+                    <?php
                     }
-                    
-                ?>
+                    ?>
                 <h3>Questionários:</h3>
                 <?php
                     $query = "SELECT * FROM files WHERE file_type='Questionário'";
@@ -99,15 +103,25 @@ $course_info = "Administrador do Sistema - $username";
                     }
                     while ($row = $result->fetch_assoc()) {
                         $file = $row['file'];
-                        echo "<form class='inline_content' action='../controllers/excluir_arquivo.php' method='POST'>";
-                        echo "   <input type='hidden' name='file' value=$file>";
-                        echo"    <li>$file</li>";
-                        echo "   <button class='image-button' type=submit';>";
-                        echo"        <img src='..\images\delete.svg' alt='Delete' class='close'>";
-                        echo "   </button>";
-                        echo"</form>";
+                        ?>
+                        <div class=inline_content>
+                            <li><?php echo "$file"?></li>
+                            <div class="inline_buttons">
+                                <form id="preview-form" class="center" action="visualizar_questionario.php" method="POST" enctype="multipart/form-data" target="_blank">
+                                    <button class="button_negative"> VISUALIZAR </button>
+                                    <input type='hidden' name='file' value='<?php echo "$file"?>'>
+                                </form>
+                                <form class='confirm' action='../controllers/excluir_arquivo.php' method='POST'>
+                                    <input type='hidden' name='file' value='<?php echo "$file"?>'>
+                                    <button class='image-button' type=submit>
+                                        <img src='..\images\delete.svg' alt='Delete' class='close'>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php
                     }
-                ?>
+                    ?>
                 <div class="survey_buttons">
                     <a class="button_negative" href='index_master.php' id="survey_negative">VOLTAR</a>
                     <form action="nova_instancia_2.php">
@@ -127,7 +141,7 @@ $course_info = "Administrador do Sistema - $username";
 </html>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var forms = document.getElementsByClassName('inline_content');
+    var forms = document.getElementsByClassName('confirm');
     for (var i = 0; i < forms.length; i++) {
         forms[i].addEventListener('submit', function(event) {
             var confirmation = confirm('Tem certeza de que deseja remover o arquivo selecionado?');

@@ -26,6 +26,7 @@ $course_info = "Administrador do Sistema - $username";
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
+    <link rel="icon" href="../images/logo.svg">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
 <body>
@@ -89,9 +90,9 @@ $course_info = "Administrador do Sistema - $username";
                         ?>
                         </select>
                     </form>
-                    <form id="preview-form" class="center" action="../visualizar.php" method="POST" enctype="multipart/form-data" target="_blank">
-                        <label for="file-upload" class="button_negative"> VISUALIZAR </label>
-                        <input type="hidden" name="oi">
+                    <form id="preview-form" class="center" action="visualizar_questionario.php" method="POST" enctype="multipart/form-data" target="_blank">
+                        <button class="button_negative" id="preview-button"> VISUALIZAR </button>
+                        <input type="hidden" name="questionnaire_name" id="selected_instance" required>
                     </form>
                 </div>   
                 <h3>Turmas identificadas:</h3>
@@ -132,7 +133,36 @@ $course_info = "Administrador do Sistema - $username";
 </body>
 </html>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+    const selectInstance = document.getElementById('instance');
+    const previewButton = document.getElementById('preview-button');
+    const selectedInstanceInput = document.getElementById('selected_instance');
+
+    function updatePreviewButtonState() {
+        if (!selectedInstanceInput.value) {
+            previewButton.disabled = true;
+            previewButton.classList.add('button_disabled');
+        } else {
+            previewButton.disabled = false;
+            previewButton.classList.remove('button_disabled');
+        }
+    }
+
+    // Adiciona o evento 'change' ao selectInstance para atualizar o estado do botão
+    selectInstance.addEventListener('change', function() {
+        selectedInstanceInput.value = this.value;
+        updatePreviewButtonState();
+    });
+
+    // Chama updatePreviewButtonState() para definir o estado inicial do botão
+    updatePreviewButtonState();
+});
+
+    document.getElementById('instance').addEventListener('change', function() {
+    document.getElementById('selected_instance').value = this.value;
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('criar_instancia').addEventListener('submit', function(event) {
         var today = new Date();
         var todayStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0') + 'T' + String(today.getHours()).padStart(2, '0') + ':' + String(today.getMinutes()).padStart(2, '0');

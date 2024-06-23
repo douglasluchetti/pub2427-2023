@@ -35,6 +35,7 @@ $instance_id = $_POST['instance_id'];
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
+    <link rel="icon" href="../images/logo.svg">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
 <body>
@@ -53,9 +54,12 @@ $instance_id = $_POST['instance_id'];
                 <h3><?php echo $welcome_message; ?></h3>
                 <h4><?php echo $course_info; ?></h4>
                 </div>
-                <a class="logout" href="..\controllers\logout.php">
-                    <img src="..\images\logout.svg" alt="Logout" class="logout">
-                </a>
+                <form class="logout" action="..\controllers\logout.php" method="POST">
+                <input type="submit" id="logout" style="display: none;">   
+                <label for="logout" class="button_negative" id="logout">
+                    Sair <img src="..\images\logout.svg" alt="logout" class="button_image">
+                </label>
+            </form>
                 </div>
                 <div class="block" id="index">
                     <div class="survey_buttons">

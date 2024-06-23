@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+    <title>Avaliação de Disciplinas</title>
+    <meta charset="utf-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        :root {
+            --Primary-Darker: #E38D13;
+            --Surface: #FFF;
+            --Divider: #EFEFEF;
+            --Secondary-Darker: #1094AB;
+            --Secondary: #64C4D1;
+            --On-Surface-Medium-Emphasis: #4B4B4B;
+            --On-Surface-Low-Emphasis: #C7C7C7;
+            --On-Surface-High-Emphasis: #1E2732;
+            --Primary-Default: #FCB421;
+            --Secondary-Lighter: #30E395;
+        }
+    </style>
+</head>
+<body style="margin: 0; background-color: #F8FAFB; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between;">
+    <div class="header" style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 100%; height: 90px; margin: 0;">
+        <div class="logo_name" style="display: flex; width: 100%; height: 86%; justify-content: center; align-items: center; background: var(--Primary-Darker);">
+            <h1 style="color: var(--Surface); font-family: Archivo; font-size: 40px;">Avaliação de Disciplinas</h1>
+        </div>
+        <div class="line" style="width: 100%; height: 4px;"></div>
+        <div class="line" id="standart" style="width: 100%; height: 4px; background-color: var(--Secondary);"></div>
+        <div class="line" id="darker" style="width: 100%; height: 4px; background-color: var(--Secondary-Darker);"></div>
+    </div>
+    <div class="content" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <h2 class="title_reset-password" style="color: var(--Primary-Default); font-feature-settings: 'clig' off, 'liga' off; font-family: Archivo; font-size: 26px; font-style: normal; font-weight: 700; line-height: 36px; /* 105.882% */ align-self: stretch; margin: 0; align-self: auto; margin-bottom: -16px;">Redefinição de Senha</h2>
+        <div class="block" id="login" style="height: 420px; width: 480px; gap: 10px; padding: 0px; margin: 42px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 12px; flex-direction: column; background: var(--Surface); box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.20), 0px 1px 18px 0px rgba(0, 0, 0, 0.12), 0px 6px 10px 0px rgba(0, 0, 0, 0.14); padding: 28px;">
+                <h4 class="text_reset-password" style="text-align: start; color: var(--On-Surface-Medium-Emphasis); font-family: Archivo; font-size: 20px; font-style: normal; font-weight: 500; line-height: 24px; letter-spacing: 0.15px; margin: 0px;">
+                    Olá, Usuário administrador!
+                    <br><br><br>
+                    Você solicitou recentemente a redefinição de senha para o seu usuário.
+                    Aqui está a nova senha gerada:
+                </h4>
+                <h3 class="text_reset-password" style="text-align: start; color: var(--On-Surface-High-Emphasis); font-family: Archivo; font-size: 32px; font-style: normal; font-weight: 500; line-height: 24px; letter-spacing: 10px; margin: 0px;">
+                    <br><br>
+                    UX90422
+                </h3>
+                <h4 class="text_reset-password" style="text-align: start; color: var(--On-Surface-Medium-Emphasis); font-family: Archivo; font-size: 20px; font-style: normal; font-weight: 500; line-height: 24px; letter-spacing: 0.15px; margin: 0px;">
+                    <br><br>
+                    Caso não tenha solicitado a redefinição de senha, basta ignorar este e-mail.
+                    <br><br><br>
+                    Att,
+                    <br>
+                    Avaliação de Disciplinas
+                </h4>
+        </div>
+    </div>
+    <div class="footer" style="display: flex; background: var(--Divider); padding: 0.4% 3% 0.4%; margin-top: 30px;">
+        <div class="footer_content" style="display: flex; justify-content: flex-start; align-items: center; border-top: 1px solid var(--On-Surface-Medium-Emphasis); width: 94%;">
+            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" style="color: var(--On-Surface-Medium-Emphasis); font-family: Open Sans; font-size: 11px; letter-spacing: 0.25px; padding-top: 0.2%; margin-right: 5%; white-space: nowrap; text-decoration: none;">Desenvolvedores</a>
+            <a href="https://teste.123" class="footer" style="color: var(--On-Surface-Medium-Emphasis); font-family: Open Sans; font-size: 11px; letter-spacing: 0.25px; padding-top: 0.2%; margin-right: 5%; white-space: nowrap; text-decoration: none;">Termos de Uso</a>
+        </div>
+    </div>
+</body>
+</html>

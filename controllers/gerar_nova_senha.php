@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $assunto = '=?UTF-8?B?'.base64_encode("Avaliação de Disciplinas | Senha").'?=';
     $mail->Subject = $assunto;   // email subject headings
     $mail->Body    = "Olá, $name! <br> Sua senha é: " . $row['password'] . "<br><br> Atenciosamente, <br> Avaliação de Disciplinas."; //email message
+    //$mail->Body = file_get_contents('../views/mail.html');
     
     // Success sent message alert
     if ($mail->send()) {

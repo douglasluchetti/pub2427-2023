@@ -28,7 +28,6 @@ $result_instance = $stmt_instance->get_result();
 $instance_off = FALSE;
 
 $instance_id = $_POST['instance_id'];
-
 ?>
 
 <!DOCTYPE html>

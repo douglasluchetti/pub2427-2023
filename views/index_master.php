@@ -82,13 +82,13 @@ $instance_off = FALSE;
                         <?php
                             if (!empty($_SESSION['instance_id'])) {
                                     ?>
-                                       <option value=<?php echo $_SESSION['instance_id']; ?>><?php echo $_SESSION['instance_id']; ?></option>   
+                                       <option value="<?php echo $_SESSION['instance_id']; ?>"><?php echo $_SESSION['instance_id']; ?></option>   
                                     <?php
                                 }
                             while ($row = $result_instance->fetch_assoc()) {
                                 if ($_SESSION['instance_id'] != $row['instance_id']) {
                                     ?>
-                                    <option value=<?php echo $row['instance_id']; ?>><?php echo $row['instance_id']; ?></option>
+                                    <option value="<?php echo $row['instance_id']; ?>"><?php echo $row['instance_id']; ?></option>
                                     <?php
                                 };
                             }
@@ -144,7 +144,7 @@ $instance_off = FALSE;
                                 </div>
                                     <form class="inline_content" method='POST' action='volume_respostas.php'>
                                         <li>Acompanhar volume de respostas</li>
-                                        <input type='hidden' name='instance_id' value=<?php echo $instance_id; ?>>
+                                        <input type='hidden' name='instance_id' value="<?php echo $instance_id; ?>">
                                         <button class='image-button' type='submit'>
                                                 <img src='..\images\edit.svg' alt='edit' class='close'>
                                         </button>
@@ -179,7 +179,7 @@ $instance_off = FALSE;
                                     </div>    -->
                                     <form class="inline_content" method='POST' action='../controllers/download_tabela.php' target="_blank">
                                         <li>Fazer download de todas as respostas da instância</li>
-                                        <input type='hidden' name='instance_id' value=<?php echo $instance_id; ?>>
+                                        <input type='hidden' name='instance_id' value="<?php echo $instance_id; ?>">
                                         <button class='image-button' type='submit'>
                                                 <img src='..\images\download.svg' alt='download' class='close'>
                                         </button>

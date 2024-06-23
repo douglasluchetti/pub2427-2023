@@ -22,7 +22,7 @@
         <div class="block" id="login">
             <!-- Login form -->
             <form action="controllers/login.php" method="POST" class="login">
-                <input class="login" type="text" name="username" placeholder="Número de matrícula ou e-mail" required>
+                <input class="login" type="text" name="username" placeholder="Identificação ou e-mail" required>
                 <input class="login" type="password" name="password" placeholder="Senha" required>
                 <button type="submit">ENTRAR</button>
                 <a class="button_negative" href="views/nova_senha.php">ESQUECI A SENHA</a>

@@ -60,8 +60,8 @@ $subject_name = $class_row['subject_name'];
                 <h4><?php echo $course_info; ?></h4>
             </div>
             <form class="logout" action="..\controllers\logout.php" method="POST">
-                <input type="submit" id="file-upload" style="display: none;">   
-                <label for="file-upload" class="button_negative" id="logout">
+                <input type="submit" id="logout" style="display: none;">   
+                <label for="logout" class="button_negative" id="logout">
                     Sair <img src="..\images\logout.svg" alt="logout" class="button_image">
                 </label>
             </form>
@@ -82,6 +82,7 @@ $subject_name = $class_row['subject_name'];
                     <input class="login" type="text" id="subject_name" placeholder="Nome da Disciplina" name="subject_name" value="<?php echo $subject_name;?>" required>
                 </form>
                 <h3>Questionário:</h3>
+                <h4 id="subtitle_index_admin_2">Essa seleção irá alterar somente o questionário desta disciplina selecionada.</h4>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
                         <select class="select_instance" name="questionnaire_name" id="instance" required form="editar_classe">

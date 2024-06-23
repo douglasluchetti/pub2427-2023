@@ -240,7 +240,7 @@ h4{
 }
 
 .error{
-    position: fixed;
+    position: absolute;
     display: flex;
     top: 110px; 
     right: 28px;
@@ -292,18 +292,13 @@ div.top_menu{
     align-items: center;
 }
 
-.logoUT{
-    width: 48px;
-    height: 48px;
-}
-
 
 div.block#index > *:first-child {
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 div.block#index > *:last-child {
-    margin-bottom: 60px; 
+    margin-bottom: 40px; 
 }
 
 div.survey_title{
@@ -425,6 +420,11 @@ h4.alternative{
     align-self: stretch;
     flex-grow: 1;
     text-align: center;
+}
+
+#preview-form{
+    width: 128px;
+    margin-left: 48px;
 }
 
 #waiting{

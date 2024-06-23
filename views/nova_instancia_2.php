@@ -45,8 +45,8 @@ $course_info = "Administrador do Sistema - $username";
                 <h4><?php echo $course_info; ?></h4>
             </div>
             <form class="logout" action="..\controllers\logout.php" method="POST">
-                <input type="submit" id="file-upload" style="display: none;">   
-                <label for="file-upload" class="button_negative" id="logout">
+                <input type="submit" id="logout" style="display: none;">   
+                <label for="logout" class="button_negative" id="logout">
                     Sair <img src="..\images\logout.svg" alt="logout" class="button_image">
                 </label>
             </form>
@@ -67,8 +67,12 @@ $course_info = "Administrador do Sistema - $username";
                         <input class="login" type="datetime-local" id="instance_date_end" name="instance_date_end" required>
                     </div>
                 </form>
-                <h3>Questionário:</h3>
-                <h4 id="subtitle_index_admin_2">Selecione o questionário comum que será utilizado nas disciplinas. Para questionários específicos - por exemplo, utilizados em turmas de laboratório ou de trabalho de formatura - altere o questionário diretamente nas configurações da turma.</h4>
+                <h3>Questionário padrão:</h3>
+                <h4 id="subtitle_index_admin_2">
+                    Selecione o questionário padrão que será utilizado nas disciplinas. 
+                    <br> 
+                    Para selecionar um questionário personalizado em uma única disciplina, acesse abaixo as configurações da turma.
+                </h4>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
                         <select class="select_instance" name="questionnaire_name" id="instance" required form="criar_instancia">
@@ -84,6 +88,10 @@ $course_info = "Administrador do Sistema - $username";
                             }
                         ?>
                         </select>
+                    </form>
+                    <form id="preview-form" class="center" action="../visualizar.php" method="POST" enctype="multipart/form-data" target="_blank">
+                        <label for="file-upload" class="button_negative"> VISUALIZAR </label>
+                        <input type="hidden" name="oi">
                     </form>
                 </div>   
                 <h3>Turmas identificadas:</h3>

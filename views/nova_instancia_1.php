@@ -45,8 +45,8 @@ $course_info = "Administrador do Sistema - $username";
                 <h4><?php echo $course_info; ?></h4>
             </div>
             <form class="logout" action="..\controllers\logout.php" method="POST">
-                <input type="submit" id="file-upload" style="display: none;">   
-                <label for="file-upload" class="button_negative" id="logout">
+                <input type="submit" id="flogoutd" style="display: none;">   
+                <label for="logout" class="button_negative" id="logout">
                     Sair <img src="..\images\logout.svg" alt="logout" class="button_image">
                 </label>
             </form>

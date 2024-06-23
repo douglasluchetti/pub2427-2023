@@ -16,7 +16,7 @@
             <div class="line" id="darker"></div>
         </div>
         <div class="content">
-            <h2 class="title_reset-password">Esqueci a Senha / Primeiro Acesso</h2>
+            <h2 class="title_reset-password">Redefinir Senha</h2>
             <div class="block" id="login">
                 <form action="../controllers/gerar_nova_senha.php" method="POST" class="login">
                     <h4 class="text_reset-password">Insira seu número de matrícula ou e-mail para enviar sua nova senha no endereço de e-mail:</h4>

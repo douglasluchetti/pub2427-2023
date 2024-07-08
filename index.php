@@ -3,13 +3,11 @@
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
-    <link rel="icon" href="images/logo.svg">
-
-    <!-- Link to the stylesheet -->
+    <link rel="icon" href="images/logo.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 <body>
-    <!-- Header section -->
     <div class="header">
         <div class="logo_name">
             <img src="images/logo.svg" alt="Logo" class="logo">
@@ -52,10 +50,8 @@
         unset($_SESSION['new_password']);
     };
     ?>
-    <!-- Content section -->
     <div class="content">
         <div class="block" id="login">
-            <!-- Login form -->
             <form action="controllers/login.php" method="POST" class="login">
                 <input class="login" type="text" name="username" placeholder="Identificação ou e-mail" required>
                 <input class="login" type="password" name="password" placeholder="Senha" required>
@@ -76,7 +72,6 @@
             </p>
         </div>
     </div>
-    <!-- Footer section -->
     <div class="footer">
         <div class="footer_content">
             <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Desenvolvedores</a>

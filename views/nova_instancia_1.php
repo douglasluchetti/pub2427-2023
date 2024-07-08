@@ -26,7 +26,8 @@ $course_info = "Administrador do Sistema - $username";
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
-    <link rel="icon" href="../images/logo.svg">
+    <link rel="icon" href="images/logo.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
 <body>

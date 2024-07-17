@@ -42,9 +42,10 @@ else{
     $stmt->execute();
 
     //Atualiza o questionario
-    $stmt = $conn->prepare("UPDATE `instance_questionnaire_class_relation-temp` SET `questionnaire_id` = ?
+    $stmt = $conn->prepare("UPDATE `instance_questionnaire_class_relation-temp` SET 
+    `questionnaire_id` = ?, `class_id` = ?, `subject_id` = ?
     WHERE `class_id` = ? AND `subject_id` = ?");
-    $stmt->bind_param("sss", $questionnaire_id, $class_id, $subject_id);
+    $stmt->bind_param("sssss", $questionnaire_id, $class_id_new, $subject_id_new, $class_id, $subject_id);
     $stmt->execute();
 
     header("Location: ../views/nova_instancia_2.php");

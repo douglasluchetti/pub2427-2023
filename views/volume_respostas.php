@@ -35,6 +35,7 @@ $instance_id = $_POST['instance_id'];
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
+    <meta name="description" content="Este é um projeto open source para avaliação de disciplinas. Contribua no GitHub.">
     <link rel="icon" href="images/logo.svg" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
@@ -111,8 +112,7 @@ $instance_id = $_POST['instance_id'];
                 </div>
                 <div class="footer">
                     <div class="footer_content">
-            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Desenvolvedores</a>
-            <a href="https://teste.123" class="footer">Termos de Uso</a>
+            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalemtnte open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
         </div>
     </div>
 </body>

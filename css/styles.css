@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+#my{
+    zoom: 80%;
+    }
+
 :root {
     --Primary-Darker: #E38D13;
     --Surface: #FFF;
@@ -100,6 +104,10 @@ div.footer_content{
     align-items: center;
     border-top: 1px solid var(--On-Surface-Medium-Emphasis);
     width: 94%;
+}
+.master .list-tile{
+    padding-top: 40px;
+    margin-bottom: 10px;
 }
 
 a.footer{
@@ -300,11 +308,11 @@ div.top_menu{
 
 
 div.block#index > *:first-child {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 div.block#index > *:last-child {
-    margin-bottom: 40px; 
+    margin-bottom: 20px; 
 }
 
 div.survey_title{
@@ -399,6 +407,10 @@ h4.alternative{
     align-items: center;
 }
 
+.master .survey_buttons{
+    margin: 40px 80px 20px 80px;  
+}
+
 #survey_negative{
     width: 253px;
 }
@@ -413,6 +425,15 @@ h4.alternative{
     justify-content: space-between;
     align-items: center;
 
+}
+
+.master .row_content{
+    margin: 0px 80px 0px 80px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .master{
@@ -432,6 +453,10 @@ h4.alternative{
 #preview-form{
     width: 128px;
     margin-left: 48px;
+}
+
+#configurar{
+    width: 128px;
 }
 
 .inline_buttons{
@@ -494,6 +519,14 @@ select::-ms-expand {
     transition: .25s all ease;
     pointer-events: none;
 }
+
+.text-editor{
+    width: 980px;
+    border: 1px solid var(--On-Surface-Medium-Emphasis, #4B4B4B);
+    border-radius: 8px;
+    padding: 8px;
+}
+
 /* Transition */
 .select:hover::after {
     color: var(--Divider);

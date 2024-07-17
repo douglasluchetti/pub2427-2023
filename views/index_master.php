@@ -44,6 +44,7 @@ $instance_off = FALSE;
 <head>
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
+    <meta name="description" content="Este é um projeto open source para avaliação de disciplinas. Contribua no GitHub.">
     <link rel="icon" href="images/logo.svg" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
@@ -73,11 +74,11 @@ $instance_off = FALSE;
         </div>
         <div class="block" id="index">
              <div class="survey_buttons">  
-                <h2>Aplicação de Questionário</h2>
-                <a class="button_negative" href="nova_instancia_1.php">NOVA INSTÂNCIA DE AVALIAÇÃO</a>
+                <h2>Gerenciar Instâncias de Avaliação</h2>
+                <a class="button_negative" href="nova_instancia_2.php">NOVA INSTÂNCIA DE AVALIAÇÃO</a>
             </div>
             <div class="master">
-                <h3>Ações sobre os questionários da instância selecionada:</h3>
+                <h3>Selecione a instância que deseja gerenciar:</h3>
                 <?php
                  if ($result_instance->num_rows > 0) {
                     ?>
@@ -188,6 +189,13 @@ $instance_off = FALSE;
                                         <button class='image-button' type='submit'>
                                                 <img src='..\images\download.svg' alt='download' class='close'>
                                         </button>
+                                    </form>
+                                    <form class="inline_content" method='POST' action='plano_de_acao.php'>
+                                        <li>Inserir ou alterar um plano de ação para a instância:</li>
+                                        <input type='hidden' name='instance_id' value="<?php echo $instance_id; ?>">
+                                        <button class='image-button' type='submit'>
+                                                <img src='..\images\edit.svg' alt='edit' class='close'>
+                                        </button>
                                     </form>   
                                 <?php
 
@@ -202,8 +210,7 @@ $instance_off = FALSE;
     </div>
     <div class="footer">
         <div class="footer_content">
-            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Desenvolvedores</a>
-            <a href="https://teste.123" class="footer">Termos de Uso</a>
+            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalemtnte open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
         </div>
     </div>
 </body>

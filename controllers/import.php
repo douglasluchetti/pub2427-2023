@@ -258,6 +258,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->close();
 
-    header("Location: ../views/nova_instancia_1.php");
+    header("Location: ../views/nova_instancia_2.php");
 }
 ?>

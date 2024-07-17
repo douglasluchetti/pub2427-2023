@@ -26,6 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
     }
 
-        header("Location: ../views/nova_instancia_1.php");
+        header("Location: ../views/nova_instancia_2.php");
 }
 ?>

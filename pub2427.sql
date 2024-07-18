@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/05/2024 às 21:40
+-- Tempo de geração: 18/07/2024 às 21:44
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -72,6 +72,21 @@ CREATE TABLE `alternative-temp` (
   `content` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `alternative-temp`
+--
+
+INSERT INTO `alternative-temp` (`alternative_id`, `content`, `file`) VALUES
+(24, 'Produção', 'Questionário_TF.csv'),
+(25, 'Organização do Trabalho', 'Questionário_TF.csv'),
+(26, 'Estoques', 'Questionário_TF.csv'),
+(27, 'Gestão de Projetos', 'Questionário_TF.csv'),
+(28, 'Logística', 'Questionário_TF.csv'),
+(29, 'Ruim', 'Questionário_TF.csv'),
+(30, 'Médio', 'Questionário_TF.csv'),
+(31, 'Bom', 'Questionário_TF.csv'),
+(32, 'Ótimo', 'Questionário_TF.csv');
 
 -- --------------------------------------------------------
 
@@ -166,6 +181,13 @@ CREATE TABLE `files` (
   `file_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `files`
+--
+
+INSERT INTO `files` (`file`, `file_type`) VALUES
+('Questionário_TF.csv', 'Questionário');
+
 -- --------------------------------------------------------
 
 --
@@ -177,15 +199,16 @@ CREATE TABLE `instance` (
   `status` int(11) NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp(),
   `instance_date_beginning` datetime DEFAULT NULL,
-  `instance_date_end` datetime DEFAULT NULL
+  `instance_date_end` datetime DEFAULT NULL,
+  `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `instance`
 --
 
-INSERT INTO `instance` (`instance_id`, `status`, `created_at`, `instance_date_beginning`, `instance_date_end`) VALUES
-('20241', 2, '2024-05-16', '2024-05-16 16:25:00', '2024-05-17 16:24:00');
+INSERT INTO `instance` (`instance_id`, `status`, `created_at`, `instance_date_beginning`, `instance_date_end`, `content`) VALUES
+('20241', 2, '2024-05-16', '2024-05-16 16:25:00', '2024-05-17 16:24:00', '<p>Teste 123456</p>');
 
 -- --------------------------------------------------------
 
@@ -269,6 +292,15 @@ CREATE TABLE `question-temp` (
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `question-temp`
+--
+
+INSERT INTO `question-temp` (`question_id`, `question_type`, `title`, `content`, `alternative_1`, `alternative_2`, `alternative_3`, `alternative_4`, `alternative_5`, `alternative_6`, `file`) VALUES
+(9, '0', 'Quais os temas abordados no seu trabalho?', '', '', '', '', '', '', '', 'Questionário_TF.csv'),
+(10, '1', 'Como você avalia seu desempenho no desenvolvimento do trabalho?', '', '', '', '', '', '', '', 'Questionário_TF.csv'),
+(11, '2', 'Algum comentário adicional?', '', '', '', '', '', '', '', 'Questionário_TF.csv');
+
 -- --------------------------------------------------------
 
 --
@@ -298,6 +330,13 @@ CREATE TABLE `questionnaire-temp` (
   `questionnaire_name` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `questionnaire-temp`
+--
+
+INSERT INTO `questionnaire-temp` (`questionnaire_id`, `questionnaire_name`, `file`) VALUES
+(2, 'Questionário de Trabalho de Formatura', 'Questionário_TF.csv');
 
 -- --------------------------------------------------------
 
@@ -335,6 +374,15 @@ CREATE TABLE `questionnaire_question_relation-temp` (
   `question_id` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `questionnaire_question_relation-temp`
+--
+
+INSERT INTO `questionnaire_question_relation-temp` (`questionnaire_id`, `question_id`, `file`) VALUES
+('2', '9', 'Questionário_TF.csv'),
+('2', '10', 'Questionário_TF.csv'),
+('2', '11', 'Questionário_TF.csv');
 
 -- --------------------------------------------------------
 
@@ -387,6 +435,21 @@ CREATE TABLE `question_alternative_relation-temp` (
   `alternative_id` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `question_alternative_relation-temp`
+--
+
+INSERT INTO `question_alternative_relation-temp` (`question_id`, `alternative_id`, `file`) VALUES
+('10', '29', 'Questionário_TF.csv'),
+('10', '30', 'Questionário_TF.csv'),
+('10', '31', 'Questionário_TF.csv'),
+('10', '32', 'Questionário_TF.csv'),
+('9', '24', 'Questionário_TF.csv'),
+('9', '25', 'Questionário_TF.csv'),
+('9', '26', 'Questionário_TF.csv'),
+('9', '27', 'Questionário_TF.csv'),
+('9', '28', 'Questionário_TF.csv');
 
 -- --------------------------------------------------------
 
@@ -571,7 +634,7 @@ ALTER TABLE `alternative`
 -- AUTO_INCREMENT de tabela `alternative-temp`
 --
 ALTER TABLE `alternative-temp`
-  MODIFY `alternative_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `alternative_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de tabela `answer`
@@ -589,7 +652,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT de tabela `question-temp`
 --
 ALTER TABLE `question-temp`
-  MODIFY `question_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `question_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `questionnaire`
@@ -601,7 +664,7 @@ ALTER TABLE `questionnaire`
 -- AUTO_INCREMENT de tabela `questionnaire-temp`
 --
 ALTER TABLE `questionnaire-temp`
-  MODIFY `questionnaire_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `questionnaire_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

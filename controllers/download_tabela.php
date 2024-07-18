@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($answersByUser as $user_id => $answers) {
             $row = [$user_count]; // Inicia a linha com o user_id
             foreach ($unique_titles as $title) {
-                if ($title != 'user') { // Pula a primeira coluna 'user'
+                if ($title != 'Resposta') { // Pula a primeira coluna 'user'
                     $row[] = isset($answers[$title]) ? $answers[$title] : "";
                 }
             }

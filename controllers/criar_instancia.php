@@ -62,6 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("DELETE FROM `files`");
     $stmt->execute();
 
-        header("Location: ../views/index_master.php");
+        header("Location: questionario_padrao.php");
 }
 ?>

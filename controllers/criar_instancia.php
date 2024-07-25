@@ -12,6 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $instance_date_end = $_POST['instance_date_end'];
     $instance_date_end = date('Y-m-d H:i:s', strtotime($instance_date_end));
 
+    //Verifica se o id já existe::
+    $query = "SELECT * FROM `instance` WHERE `instance_id`=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $instance_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        echo "<script>
+        alert('Já existe uma instancia com o mesmo nome criada. Por favor, utilize outro nome.');
+        window.location.href = '../views/nova_instancia_2.php';
+        </script>";
+        exit();
+    }
+
     //Obtem o id do questionário padrão:
     $query = "SELECT * FROM `questionnaire-temp` WHERE `questionnaire_name`=?";
     $stmt = $conn->prepare($query);

@@ -113,7 +113,7 @@ div.footer_content{
 a.footer{
     color: var(--On-Surface-Medium-Emphasis);
     font-family: Open Sans;
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.25px;
     padding-top: 0.2%;
     margin-right: 5%;
@@ -305,7 +305,16 @@ div.top_menu{
     margin: 20px 0px;
     align-items: center;
 }
+div#title_buttons{
+    align-items: center;
+    margin-bottom: 16px;
+}
 
+#upload_button{
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
 
 div.block#index > *:first-child {
     margin-top: 20px;
@@ -369,6 +378,15 @@ label{
 h4.alternative{
     display: flex;
     align-items: center;
+}
+
+.upload{
+    margin: 0px 0px 0px 0px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
 }
 
 .form__group {

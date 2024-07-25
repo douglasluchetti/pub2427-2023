@@ -27,8 +27,8 @@ $course_info = "Administrador do Sistema - $username";
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
     <meta name="description" content="Este é um projeto open source para avaliação de disciplinas. Contribua no GitHub.">
-    <link rel="icon" href="images/logo.svg" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../images/logo.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../images/logo_dark.svg" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
 <body>
@@ -70,20 +70,11 @@ $course_info = "Administrador do Sistema - $username";
                         <input class="login" type="datetime-local" id="instance_date_end" name="instance_date_end" required>
                     </div>
                 </form>
-                <h3>Upload de arquivos:</h3>
-                <h4 id="subtitle_index_admin_2">Importe listas de alunos e questionários na formatação adequada.</h4>
-                <form id="upload-form" class="center" action="../controllers/import.php" method="POST" enctype="multipart/form-data">
-                    <label for="file-upload" class="button_negative">
-                        UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image">
-                    </label>
-                    <input type="hidden" name="import">
-                    <input name="file[]" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()" required>
-                </form>
                 <h3>Questionário padrão:</h3>
                 <h4 id="subtitle_index_admin_2">
-                    Selecione o questionário padrão que será utilizado nas disciplinas. 
+                    Selecione o questionário tomado como padrão para a instância. 
                     <br> 
-                    Para selecionar um questionário personalizado em uma única disciplina, acesse abaixo as configurações da turma.
+                    É possível selecionar um questionário específico, individualmente, nas turmas listadas abaixo.
                 </h4>
                 <div class="center">
                     <form class="select" id="select_instance" method="POST">
@@ -102,7 +93,20 @@ $course_info = "Administrador do Sistema - $username";
                         </select>
                     </form>
                 </div>
-                <h3 class="list-tile">Questionários:</h3>
+                <div class="row_content" id="title_buttons">
+                    <div>
+                        <h3 class="list-tile">Questionários:</h3>
+                        <br>
+                        <h4 id="subtitle_index_admin_2">Importe os questionários seguindo a formatação adequada.</h4>
+                    </div>
+                    <form id="upload-form" class="upload" action="../controllers/import.php" method="POST" enctype="multipart/form-data">
+                        <label for="file-upload" class="button_negative" id="upload_button">
+                            UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image">
+                        </label>
+                        <input type="hidden" name="import">
+                        <input name="file[]" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()" required>
+                    </form>
+                </div>
                 <?php
                     $query = "SELECT * FROM files WHERE file_type='Questionário'";
                     $stmt = $conn->prepare($query);
@@ -131,8 +135,21 @@ $course_info = "Administrador do Sistema - $username";
                         </div>
                     <?php
                     }
-                    ?>   
-                <h3 class="list-tile">Turmas identificadas:</h3>
+                    ?> 
+                <div class="row_content" id="title_buttons">
+                    <div>
+                        <h3 class="list-tile">Turmas de alunos:</h3>
+                        <br>
+                        <h4 id="subtitle_index_admin_2">Importe as turmas seguindo a formatação adequada.</h4>
+                    </div>
+                    <form id="upload-form" class="upload" action="../controllers/import.php" method="POST" enctype="multipart/form-data">
+                        <label for="file-upload" class="button_negative" id="upload_button">
+                            UPLOAD <img src="..\images\upload.svg" alt="Upload" class="button_image">
+                        </label>
+                        <input type="hidden" name="import">
+                        <input name="file[]" id="file-upload" accept=".csv" type="file" multiple style="display: none;" onchange="this.form.submit()" required>
+                    </form>
+                </div>
                 <?php
                     $query = "SELECT * FROM `class-temp`";
                     $stmt = $conn->prepare($query);
@@ -169,7 +186,7 @@ $course_info = "Administrador do Sistema - $username";
                 <div class="survey_buttons">
                     <a class="button_negative" href='index_master.php' id="survey_negative">VOLTAR</a>
                     <form>
-                        <button type="submit" id="survey_positive" action="index_master.php" form="criar_instancia">ENVIAR</button>
+                        <button type="submit" id="survey_positive" action="index_master.php" form="criar_instancia">SALVAR</button>
                     <form>
                 </div>
             </div>
@@ -177,7 +194,7 @@ $course_info = "Administrador do Sistema - $username";
     </div>
     <div class="footer">
         <div class="footer_content">
-            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalemtnte open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
+            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalmente open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
         </div>
     </div>
 </body>

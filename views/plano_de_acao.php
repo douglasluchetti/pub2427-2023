@@ -40,9 +40,8 @@ $content = $row['content'];
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
     <meta name="description" content="Este é um projeto open source para avaliação de disciplinas. Contribua no GitHub.">
-    <link rel="icon" href="images/logo.svg" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../images/logo.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../images/logo_dark.svg" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
     <script src="../tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
@@ -94,7 +93,7 @@ $content = $row['content'];
                     </form>
                 </div>
                 <div class="survey_buttons">
-                    <a class="button_negative" href='index_master.php' id="survey_negative">CANCELAR</a>
+                    <a class="button_negative" href='index_master.php' id="survey_negative">VOLTAR</a>
                     <button type="submit" id="survey_positive" form="plano">SALVAR</button>
                 </div>
             </div>
@@ -102,7 +101,7 @@ $content = $row['content'];
     </div>
     <div class="footer">
         <div class="footer_content">
-            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalemtnte open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
+            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalmente open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
         </div>
     </div>
 </script>

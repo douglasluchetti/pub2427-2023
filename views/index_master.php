@@ -45,8 +45,8 @@ $instance_off = FALSE;
     <title>Avaliação de Disciplinas</title>
     <meta charset="utf-8">
     <meta name="description" content="Este é um projeto open source para avaliação de disciplinas. Contribua no GitHub.">
-    <link rel="icon" href="images/logo.svg" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="images/logo_dark.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../images/logo.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../images/logo_dark.svg" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="..\css\styles.css" type="text/css">
 </head>
 <body>
@@ -191,7 +191,7 @@ $instance_off = FALSE;
                                         </button>
                                     </form>
                                     <form class="inline_content" method='POST' action='plano_de_acao.php'>
-                                        <li>Inserir ou alterar um plano de ação para a instância:</li>
+                                        <li>Editar um plano de ação para a instância:</li>
                                         <input type='hidden' name='instance_id' value="<?php echo $instance_id; ?>">
                                         <button class='image-button' type='submit'>
                                                 <img src='..\images\edit.svg' alt='edit' class='close'>
@@ -210,7 +210,7 @@ $instance_off = FALSE;
     </div>
     <div class="footer">
         <div class="footer_content">
-            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalemtnte open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
+            <a href="https://github.com/douglasluchetti/pub2427-2023" class="footer" target="_blank" rel="noopener noreferrer">Este projeto é totalmente open source. Visite o <strong>repositório</strong> no GitHub para acessar o código-fonte, relatar problemas ou contribuir com melhorias.</a>
         </div>
     </div>
 </body>

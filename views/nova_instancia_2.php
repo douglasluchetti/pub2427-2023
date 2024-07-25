@@ -77,8 +77,8 @@ $course_info = "Administrador do Sistema - $username";
                     É possível selecionar um questionário específico, individualmente, nas turmas listadas abaixo.
                 </h4>
                 <div class="center">
-                    <form class="select" id="select_instance" method="POST">
-                        <select class="select_instance" name="questionnaire_name" id="instance" required form="criar_instancia">
+                <form class="select" id="select_instance" method="POST">
+                    <select class="select_instance" name="questionnaire_name" id="instance" required form="criar_instancia">
                         <option disabled selected value> -- Selecione um questionário -- </option>
                         <?php
                             $query = "SELECT * FROM `questionnaire-temp`";
@@ -87,17 +87,17 @@ $course_info = "Administrador do Sistema - $username";
                             $result = $stmt->get_result();
                             while ($row = $result->fetch_assoc()) {
                                 $row_text = $row['questionnaire_name'];
-                                echo "<option>$row_text</option>";
+                                echo "<option value=\"$row_text\">$row_text</option>";
                             }
                         ?>
-                        </select>
-                    </form>
-                </div>
+                    </select>
+                </form>
+            </div>
                 <div class="row_content" id="title_buttons">
                     <div>
                         <h3 class="list-tile">Questionários:</h3>
                         <br>
-                        <h4 id="subtitle_index_admin_2">Importe os questionários seguindo a formatação adequada.</h4>
+                        <h4 id="subtitle_index_admin_2">Importe os questionários seguindo a <a class="link_template" href="https://github.com/douglasluchetti/pub2427-2023/wiki/Manual-do-Usu%C3%A1rio#importar-question%C3%A1rios" target="_blank">formatação adequada</a>.</h4>
                     </div>
                     <form id="upload-form" class="upload" action="../controllers/import.php" method="POST" enctype="multipart/form-data">
                         <label for="file-upload" class="button_negative" id="upload_button">
@@ -140,7 +140,7 @@ $course_info = "Administrador do Sistema - $username";
                     <div>
                         <h3 class="list-tile">Turmas de alunos:</h3>
                         <br>
-                        <h4 id="subtitle_index_admin_2">Importe as turmas seguindo a formatação adequada.</h4>
+                        <h4 id="subtitle_index_admin_2">Importe as listas seguindo a <a class="link_template" href="https://github.com/douglasluchetti/pub2427-2023/wiki/Manual-do-Usu%C3%A1rio#importar-lista-de-alunos" target="_blank">formatação adequada</a>.</h4>
                     </div>
                     <form id="upload-form" class="upload" action="../controllers/import.php" method="POST" enctype="multipart/form-data">
                         <label for="file-upload" class="button_negative" id="upload_button">
@@ -200,6 +200,21 @@ $course_info = "Administrador do Sistema - $username";
 </body>
 </html>
 <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const selectElement = document.getElementById('instance');
+        
+        // Restaurar a seleção do localStorage
+        const selectedValue = localStorage.getItem('selectedQuestionnaire');
+        if (selectedValue) {
+            selectElement.value = selectedValue;
+        }
+
+        // Armazenar a seleção no localStorage
+        selectElement.addEventListener('change', (event) => {
+            localStorage.setItem('selectedQuestionnaire', event.target.value);
+        });
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
     // Recuperar os valores salvos e preencher os campos
     if (localStorage.getItem('instance_id')) {

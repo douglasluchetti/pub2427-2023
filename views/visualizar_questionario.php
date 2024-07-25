@@ -169,6 +169,9 @@ $num_questions = 1;
                 $num_questions = $num_questions + 1; 
                 }
                 ?>
+            <div class="center">
+                <a class="button_negative" id="survey_negative" href="#" onclick="window.close(); return false;">VOLTAR</a>
+            </div>
             </form>
         </div>
         <div class="footer">

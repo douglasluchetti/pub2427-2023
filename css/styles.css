@@ -180,6 +180,10 @@ button:hover{
     box-shadow: inset 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
 }
 
+.link_template{
+    color: var(--Primary-Darker);
+}
+
 .button_negative.button_disabled {
     color: var(--On-Surface-Medium-Emphasis);
     border: 1px solid var(--On-Surface-Medium-Emphasis);

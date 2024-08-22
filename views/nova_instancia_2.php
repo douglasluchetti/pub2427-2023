@@ -74,7 +74,7 @@ $course_info = "Administrador do Sistema - $username";
                 <h4 id="subtitle_index_admin_2">
                     Selecione o questionário tomado como padrão para a instância. 
                     <br> 
-                    É possível selecionar um questionário específico, individualmente, nas turmas listadas abaixo.
+                    É possível configurar um questionário específico para uma turma através do botão 'CONFIGURAR'.
                 </h4>
                 <div class="center">
                 <form class="select" id="select_instance" method="POST">

@@ -80,9 +80,9 @@ $subject_name = $class_row['subject_name'];
                 <form class="inline_content" id="editar_classe" action="..\controllers\editar_classe.php" method="POST">
                     <input type="hidden" name="class_id" value="<?php echo $class_id; ?>">
                     <input type="hidden" name="subject_id" value="<?php echo $subject_id; ?>">
-                    <input class="login" type="text" id="code" placeholder="Turma" name="class_id_new" value="<?php echo $class_id;?>" required>
-                    <input class="login" type="text" id="code" placeholder="Disciplina" name="subject_id_new" value="<?php echo $subject_id;?>" required>
-                    <input class="login" type="text" id="subject_name" placeholder="Nome da Disciplina" name="subject_name" value="<?php echo $subject_name;?>" required>
+                    <input class="login" readonly="readonly" type="text" id="code" placeholder="Turma" name="class_id_new" value="<?php echo $class_id;?>" required>
+                    <input class="login" readonly="readonly" type="text" id="code" placeholder="Disciplina" name="subject_id_new" value="<?php echo $subject_id;?>" required>
+                    <input class="login" readonly="readonly" type="text" id="subject_name" placeholder="Nome da Disciplina" name="subject_name" value="<?php echo $subject_name;?>" required>
                 </form>
                 <h3>Questionário:</h3>
                 <h4 id="subtitle_index_admin_2">Essa seleção irá alterar somente o questionário desta disciplina selecionada.</h4>

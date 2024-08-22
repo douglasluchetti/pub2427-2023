@@ -26,6 +26,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    //Verifica se existe alguma turma cadastrada:
+    $query = "SELECT * FROM `class-temp`";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows == 0) {
+        echo "<script>
+        alert('É necessário cadastrar pelo menos uma turma na instância.');
+        window.location.href = '../views/nova_instancia_2.php';
+        </script>";
+        exit();
+    }
+
     //Obtem o id do questionário padrão:
     $query = "SELECT * FROM `questionnaire-temp` WHERE `questionnaire_name`=?";
     $stmt = $conn->prepare($query);
@@ -76,6 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("DELETE FROM `files`");
     $stmt->execute();
 
-        header("Location: questionario_padrao.php");
+    header("Location: ../views/index_master.php");
 }
 ?>

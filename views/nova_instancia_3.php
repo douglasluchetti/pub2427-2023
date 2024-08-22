@@ -76,7 +76,7 @@ $subject_name = $class_row['subject_name'];
             </div>
 
             <div class="master">
-                <h3>Insira turma, código da disciplina e nome da disciplina:</h3>
+                <h3>Confira turma, código da disciplina e nome da disciplina:</h3>
                 <form class="inline_content" id="editar_classe" action="..\controllers\editar_classe.php" method="POST">
                     <input type="hidden" name="class_id" value="<?php echo $class_id; ?>">
                     <input type="hidden" name="subject_id" value="<?php echo $subject_id; ?>">

@@ -72,9 +72,9 @@ $course_info = "Administrador do Sistema - $username";
                 </form>
                 <h3>Questionário padrão:</h3>
                 <h4 id="subtitle_index_admin_2">
-                    Selecione o questionário tomado como padrão para a instância. 
+                    Selecione o questionário tomado como padrão para todas as disciplinas. 
                     <br> 
-                    É possível configurar um questionário específico para uma turma através do botão 'CONFIGURAR'.
+                    É possível selecionar um questionário específico para uma turma através do botão 'SELECIONAR'.
                 </h4>
                 <div class="center">
                 <form class="select" id="select_instance" method="POST">
@@ -170,7 +170,7 @@ $course_info = "Administrador do Sistema - $username";
                                 <form id="preview-form" class="center" action='nova_instancia_3.php' method="POST">
                                     <input type='hidden' name='class_id' value="<?php echo $class_id?>">
                                     <input type='hidden' name='subject_id' value="<?php echo $subject_id?>">
-                                    <button class="button_negative"> CONFIGURAR </button>
+                                    <button class="button_negative"> SELECIONAR QUESTIONÁRIO </button>
                                 </form>
                                 <form class='confirm' action='../controllers/excluir_arquivo.php' method='POST'>
                                         <input type='hidden' name='file' value='<?php echo "$file"?>'>

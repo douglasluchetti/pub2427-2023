@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         session_start();
         $_SESSION['incorrect_password'] = TRUE;
-        header("Location: ../index.php");
+        header("Location: ../views/login.php");
         exit();
     }
 

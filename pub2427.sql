@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/07/2024 às 21:44
+-- Tempo de geração: 06/09/2024 às 18:07
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -73,21 +73,6 @@ CREATE TABLE `alternative-temp` (
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `alternative-temp`
---
-
-INSERT INTO `alternative-temp` (`alternative_id`, `content`, `file`) VALUES
-(24, 'Produção', 'Questionário_TF.csv'),
-(25, 'Organização do Trabalho', 'Questionário_TF.csv'),
-(26, 'Estoques', 'Questionário_TF.csv'),
-(27, 'Gestão de Projetos', 'Questionário_TF.csv'),
-(28, 'Logística', 'Questionário_TF.csv'),
-(29, 'Ruim', 'Questionário_TF.csv'),
-(30, 'Médio', 'Questionário_TF.csv'),
-(31, 'Bom', 'Questionário_TF.csv'),
-(32, 'Ótimo', 'Questionário_TF.csv');
-
 -- --------------------------------------------------------
 
 --
@@ -103,37 +88,6 @@ CREATE TABLE `answer` (
   `subject_id` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `answer`
---
-
-INSERT INTO `answer` (`answer_id`, `instance_id`, `user_id`, `question_id`, `class_id`, `subject_id`, `content`) VALUES
-(1, '20241', '11111111', '1', '2026201', 'ABC2222', 'Realizar experimentos'),
-(2, '20241', '11111111', '2', '2026201', 'ABC2222', 'Bom'),
-(3, '20241', '11111111', '3', '2026201', 'ABC2222', 'Não'),
-(4, '20241', '11111111', '4', '2026201', 'ABC2222', 'Não'),
-(5, '20241', '11111111', '5', '2026201', 'ABC2222', 'Raramente'),
-(6, '20241', '11111111', '6', '2026201', 'ABC2222', ''),
-(7, '20241', '11111111', '7', '2026201', 'ABC2222', ''),
-(8, '20241', '11111111', '8', '2026201', 'ABC2222', ''),
-(9, '20241', '11111111', '1', '2027201', 'ABC4444', 'Realizar experimentos'),
-(10, '20241', '11111111', '5', '2027201', 'ABC4444', 'Às vezes'),
-(11, '20241', '11111111', '6', '2027201', 'ABC4444', ''),
-(12, '20241', '11111111', '7', '2027201', 'ABC4444', ''),
-(13, '20241', '11111111', '8', '2027201', 'ABC4444', ''),
-(14, '20241', '12222222', '1', '2026201', 'ABC2222', 'Entender teorias'),
-(15, '20241', '12222222', '3', '2026201', 'ABC2222', 'Sim'),
-(16, '20241', '12222222', '5', '2026201', 'ABC2222', 'Raramente'),
-(17, '20241', '12222222', '6', '2026201', 'ABC2222', ''),
-(18, '20241', '12222222', '7', '2026201', 'ABC2222', ''),
-(19, '20241', '12222222', '8', '2026201', 'ABC2222', ''),
-(20, '20241', '16666666', '1', '2026201', 'ABC2222', 'Realizar experimentos'),
-(21, '20241', '16666666', '2', '2026201', 'ABC2222', 'Bom'),
-(22, '20241', '16666666', '5', '2026201', 'ABC2222', 'Frequentemente'),
-(23, '20241', '16666666', '6', '2026201', 'ABC2222', ''),
-(24, '20241', '16666666', '7', '2026201', 'ABC2222', ''),
-(25, '20241', '16666666', '8', '2026201', 'ABC2222', '');
 
 -- --------------------------------------------------------
 
@@ -153,8 +107,7 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`class_id`, `subject_id`, `subject_name`, `teacher_name`) VALUES
-('2026201', 'ABC2222', 'Disciplina Exemplo 2', 'Professor Exemplo 2'),
-('2027201', 'ABC4444', 'Disciplina Exemplo 3', 'Professor Exemplo 3');
+('2024', '1234', 'Disciplina 1', 'Professor 1');
 
 -- --------------------------------------------------------
 
@@ -181,13 +134,6 @@ CREATE TABLE `files` (
   `file_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `files`
---
-
-INSERT INTO `files` (`file`, `file_type`) VALUES
-('Questionário_TF.csv', 'Questionário');
-
 -- --------------------------------------------------------
 
 --
@@ -208,7 +154,7 @@ CREATE TABLE `instance` (
 --
 
 INSERT INTO `instance` (`instance_id`, `status`, `created_at`, `instance_date_beginning`, `instance_date_end`, `content`) VALUES
-('20241', 2, '2024-05-16', '2024-05-16 16:25:00', '2024-05-17 16:24:00', '<p>Teste 123456</p>');
+('20242', 1, '2024-09-06', '2024-09-06 13:01:00', '2024-09-26 12:36:00', '');
 
 -- --------------------------------------------------------
 
@@ -228,8 +174,7 @@ CREATE TABLE `instance_questionnaire_class_relation` (
 --
 
 INSERT INTO `instance_questionnaire_class_relation` (`instance_id`, `questionnaire_id`, `class_id`, `subject_id`) VALUES
-('20241', '1', '2026201', 'ABC2222'),
-('20241', '1', '2027201', 'ABC4444');
+('20242', '1', '2024', '1234');
 
 -- --------------------------------------------------------
 
@@ -263,7 +208,7 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`question_id`, `question_type`, `title`, `content`) VALUES
-(1, '0', 'Qual é o principal objetivo do laboratório de química?', ''),
+(1, '0', 'Qual é o principal objetivo do laboratório?', ''),
 (2, '1', 'Como você classificaria a infraestrutura do laboratório?', ''),
 (3, '1', 'O material disponibilizado foi suficiente para os experimentos?', ''),
 (4, '1', 'O instrutor demonstrou domínio sobre os temas abordados?', ''),
@@ -292,15 +237,6 @@ CREATE TABLE `question-temp` (
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `question-temp`
---
-
-INSERT INTO `question-temp` (`question_id`, `question_type`, `title`, `content`, `alternative_1`, `alternative_2`, `alternative_3`, `alternative_4`, `alternative_5`, `alternative_6`, `file`) VALUES
-(9, '0', 'Quais os temas abordados no seu trabalho?', '', '', '', '', '', '', '', 'Questionário_TF.csv'),
-(10, '1', 'Como você avalia seu desempenho no desenvolvimento do trabalho?', '', '', '', '', '', '', '', 'Questionário_TF.csv'),
-(11, '2', 'Algum comentário adicional?', '', '', '', '', '', '', '', 'Questionário_TF.csv');
-
 -- --------------------------------------------------------
 
 --
@@ -317,7 +253,7 @@ CREATE TABLE `questionnaire` (
 --
 
 INSERT INTO `questionnaire` (`questionnaire_id`, `questionnaire_name`) VALUES
-(1, 'Questionário de Laboratório de Física');
+(1, 'Questionário de Laboratório');
 
 -- --------------------------------------------------------
 
@@ -330,13 +266,6 @@ CREATE TABLE `questionnaire-temp` (
   `questionnaire_name` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `questionnaire-temp`
---
-
-INSERT INTO `questionnaire-temp` (`questionnaire_id`, `questionnaire_name`, `file`) VALUES
-(2, 'Questionário de Trabalho de Formatura', 'Questionário_TF.csv');
 
 -- --------------------------------------------------------
 
@@ -374,15 +303,6 @@ CREATE TABLE `questionnaire_question_relation-temp` (
   `question_id` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `questionnaire_question_relation-temp`
---
-
-INSERT INTO `questionnaire_question_relation-temp` (`questionnaire_id`, `question_id`, `file`) VALUES
-('2', '9', 'Questionário_TF.csv'),
-('2', '10', 'Questionário_TF.csv'),
-('2', '11', 'Questionário_TF.csv');
 
 -- --------------------------------------------------------
 
@@ -436,21 +356,6 @@ CREATE TABLE `question_alternative_relation-temp` (
   `file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `question_alternative_relation-temp`
---
-
-INSERT INTO `question_alternative_relation-temp` (`question_id`, `alternative_id`, `file`) VALUES
-('10', '29', 'Questionário_TF.csv'),
-('10', '30', 'Questionário_TF.csv'),
-('10', '31', 'Questionário_TF.csv'),
-('10', '32', 'Questionário_TF.csv'),
-('9', '24', 'Questionário_TF.csv'),
-('9', '25', 'Questionário_TF.csv'),
-('9', '26', 'Questionário_TF.csv'),
-('9', '27', 'Questionário_TF.csv'),
-('9', '28', 'Questionário_TF.csv');
-
 -- --------------------------------------------------------
 
 --
@@ -471,13 +376,18 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_type`, `name`, `password`, `email`, `course`) VALUES
-('11111111', '0', 'Aluno Exemplo 1', '278307', 'aluno.exemplo.1@universidade.br', ''),
-('12222222', '0', 'Aluno Exemplo 2', '156088', 'aluno.exemplo.2@universidade.br', ''),
-('12345678', '1', 'Usuário coordenador', '123456', 'douglaslr@usp.br', 'None'),
-('13333333', '0', 'Aluno Exemplo 3', '594140', 'aluno.exemplo.3@universidade.br', ''),
-('14444444', '0', 'Aluno Exemplo 4', '174110', 'aluno.exemplo.4@universidade.br', ''),
-('15555555', '0', 'Aluno Exemplo 5', '663616', 'aluno.exemplo.5@universidade.br', ''),
-('16666666', '0', 'Aluno Exemplo 6', '946302', 'aluno.exemplo.6@universidade.br', '');
+('115212', '0', 'aluno3', '123456', 'aluno3@usp.br', ''),
+('117848', '0', 'aluno6', '123456', 'aluno6@usp.br', ''),
+('133583', '0', 'aluno8', '123456', 'aluno8@usp.br', ''),
+('165488', '0', 'aluno5', '123456', 'aluno5@usp.br', ''),
+('168978', '0', 'aluno2', '123456', 'aluno2@usp.br', ''),
+('174700', '0', 'aluno1', '123456', 'aluno1@usp.br', ''),
+('183927', '0', 'aluno9', '123456', 'aluno9@usp.br', ''),
+('194550', '0', 'aluno10', '123456', 'aluno10@usp.br', ''),
+('195348', '0', 'aluno4', '123456', 'aluno4@usp.br', ''),
+('198736', '0', 'aluno7', '123456', 'aluno7@usp.br', ''),
+('coordenador1', '1', 'Coordenador 1', '123456', 'coordenador1@usp.br', 'None'),
+('mesquita', '1', 'Marco Aurélio de Mesquita', '123456', 'marco.mesquita@poli.usp.br', 'None');
 
 -- --------------------------------------------------------
 
@@ -512,18 +422,16 @@ CREATE TABLE `user_class_relation` (
 --
 
 INSERT INTO `user_class_relation` (`user_id`, `class_id`, `subject_id`) VALUES
-('11111111', '2026201', 'ABC2222'),
-('12222222', '2026201', 'ABC2222'),
-('13333333', '2026201', 'ABC2222'),
-('14444444', '2026201', 'ABC2222'),
-('15555555', '2026201', 'ABC2222'),
-('16666666', '2026201', 'ABC2222'),
-('11111111', '2027201', 'ABC4444'),
-('12222222', '2027201', 'ABC4444'),
-('13333333', '2027201', 'ABC4444'),
-('14444444', '2027201', 'ABC4444'),
-('15555555', '2027201', 'ABC4444'),
-('16666666', '2027201', 'ABC4444');
+('174700', '2024', '1234'),
+('168978', '2024', '1234'),
+('115212', '2024', '1234'),
+('195348', '2024', '1234'),
+('165488', '2024', '1234'),
+('117848', '2024', '1234'),
+('198736', '2024', '1234'),
+('133583', '2024', '1234'),
+('183927', '2024', '1234'),
+('194550', '2024', '1234');
 
 -- --------------------------------------------------------
 
@@ -634,13 +542,13 @@ ALTER TABLE `alternative`
 -- AUTO_INCREMENT de tabela `alternative-temp`
 --
 ALTER TABLE `alternative-temp`
-  MODIFY `alternative_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `alternative_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `question`
@@ -652,7 +560,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT de tabela `question-temp`
 --
 ALTER TABLE `question-temp`
-  MODIFY `question_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `question_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `questionnaire`
@@ -664,7 +572,7 @@ ALTER TABLE `questionnaire`
 -- AUTO_INCREMENT de tabela `questionnaire-temp`
 --
 ALTER TABLE `questionnaire-temp`
-  MODIFY `questionnaire_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `questionnaire_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($mail->send()) {
         session_start();
         $_SESSION['new_password'] = TRUE;
-        header("Location: ../index.php");
+        header("Location: ../views/login.php");
         exit();
     } else {
         echo
